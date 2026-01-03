@@ -6,52 +6,111 @@
 <title>LS Essence | Marca Própria de Perfumes</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
- --preto:#0a0a0a;--cinza:#141414;--texto:#f2f2f2;
- --muted:#b5b5b5;--dourado:#c9a24d;
+ --preto:#000;
+ --cinza:#121212;
+ --texto:#f2f2f2;
+ --muted:#b0b0b0;
+ --dourado:#c9a24d;
 }
 body{
  font-family:Arial,Helvetica,sans-serif;
- background:#000;color:var(--texto);
+ background:var(--preto);
+ color:var(--texto);
 }
-header{text-align:center;padding:50px 20px;border-bottom:1px solid rgba(201,162,77,.3)}
-.logo{width:160px;background:#fff;padding:16px;border-radius:16px;margin-bottom:15px}
+header{
+ text-align:center;
+ padding:50px 20px;
+ border-bottom:1px solid rgba(201,162,77,.3)
+}
+.logo{
+ width:160px;
+ background:#fff;
+ padding:16px;
+ border-radius:16px;
+ margin-bottom:15px
+}
 .badge{
  display:inline-block;
- border:1px solid var(--dourado);
- padding:6px 14px;
- border-radius:20px;
- font-size:12px;
  margin-top:10px;
+ padding:6px 16px;
+ border-radius:20px;
+ border:1px solid var(--dourado);
  color:var(--dourado);
+ font-size:12px
 }
-.tabs{display:flex;justify-content:center;gap:12px;margin:30px}
+.tabs{
+ display:flex;
+ justify-content:center;
+ gap:12px;
+ margin:30px
+}
 .tabs button{
- background:none;border:1px solid var(--dourado);
- color:var(--dourado);padding:10px 22px;border-radius:30px;
+ background:none;
+ border:1px solid var(--dourado);
+ color:var(--dourado);
+ padding:10px 22px;
+ border-radius:30px;
+ cursor:pointer
 }
-.tabs button.active{background:var(--dourado);color:#000}
-.grid{display:grid;grid-template-columns:1fr;gap:24px;padding:20px}
+.tabs button.active{
+ background:var(--dourado);
+ color:#000
+}
+.grid{
+ display:grid;
+ grid-template-columns:1fr;
+ gap:24px;
+ padding:20px
+}
 .card{
- background:#111;padding:22px;border-radius:20px;
- border:1px solid rgba(201,162,77,.2);text-align:center
+ background:var(--cinza);
+ border:1px solid rgba(201,162,77,.2);
+ border-radius:20px;
+ padding:22px;
+ text-align:center
 }
-.card img{max-width:150px;margin-bottom:12px}
-.card h3{font-size:15px;margin-bottom:8px}
-.desc{font-size:13px;color:var(--muted);margin-bottom:10px}
-.ref{font-size:11px;color:#888;margin-bottom:12px}
-.price{color:var(--dourado);font-size:18px;margin-bottom:12px}
-.buy{
- display:block;background:var(--dourado);color:#000;
- padding:12px;border-radius:30px;text-decoration:none;font-weight:bold
+.card h3{
+ font-size:15px;
+ margin-bottom:6px
+}
+.ref{
+ font-size:12px;
+ color:#999;
+ margin-bottom:8px
+}
+.desc{
+ font-size:13px;
+ color:var(--muted);
+ margin-bottom:12px
+}
+.price{
+ color:var(--dourado);
+ font-size:18px;
+ margin-bottom:12px
+}
+.btn{
+ display:inline-block;
+ background:var(--dourado);
+ color:#000;
+ padding:10px 24px;
+ border-radius:30px;
+ text-decoration:none;
+ font-weight:bold;
+ font-size:14px
 }
 .hidden{display:none}
 footer{
- padding:30px;font-size:11px;color:#aaa;
- border-top:1px solid rgba(201,162,77,.3);line-height:1.6
+ border-top:1px solid rgba(201,162,77,.3);
+ padding:30px;
+ font-size:11px;
+ color:#aaa;
+ line-height:1.6
 }
-@media(min-width:768px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:768px){
+ .grid{grid-template-columns:repeat(4,1fr)}
+}
 </style>
 </head>
 
@@ -68,40 +127,175 @@ footer{
  <button onclick="showTab('fem',this)">Feminino</button>
 </div>
 
+<!-- ================= MASCULINOS ================= -->
 <section id="masc">
 <div class="grid">
 
 <div class="card">
- <img src="img/sauvage.jpg">
- <h3>LS Wild No.01</h3>
- <p class="desc">Fresco aromático com especiarias, ambroxan e fundo amadeirado intenso.</p>
- <p class="ref">As características olfativas podem lembrar Sauvage Dior.</p>
- <div class="price">R$ 129,97</div>
- <a class="buy" href="produto-ls-wild-01.html">Ver detalhes</a>
+<h3>LS Wild Nº01</h3>
+<p class="ref">Ref. olfativa: Sauvage Dior</p>
+<p class="desc">Amadeirado aromático fresco, especiado e intenso, com fundo seco e moderno.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
 </div>
 
 <div class="card">
- <img src="img/aventus.jpg">
- <h3>LS Crown No.03</h3>
- <p class="desc">Frutado sofisticado com notas de abacaxi, bergamota e madeiras nobres.</p>
- <p class="ref">As características olfativas podem lembrar Creed Aventus.</p>
- <div class="price">R$ 129,97</div>
- <a class="buy" href="produto-ls-crown-03.html">Ver detalhes</a>
+<h3>LS Elite Nº02</h3>
+<p class="ref">Ref. olfativa: 212 VIP Men</p>
+<p class="desc">Aromático amadeirado envolvente, urbano e sofisticado, com toque adocicado.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Crown Nº03</h3>
+<p class="ref">Ref. olfativa: Creed Aventus</p>
+<p class="desc">Chipre frutado elegante, com frutas vibrantes e base amadeirada refinada.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Black Drive Nº04</h3>
+<p class="ref">Ref. olfativa: Ferrari Black</p>
+<p class="desc">Aromático adocicado, jovial e marcante, ideal para uso diário.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Million Gold Nº05</h3>
+<p class="ref">Ref. olfativa: One Million</p>
+<p class="desc">Oriental especiado doce, intenso e sedutor, com alta projeção.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Provocation Nº06</h3>
+<p class="ref">Ref. olfativa: Scandal Pour Homme</p>
+<p class="desc">Oriental amadeirado doce, ousado e provocante.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Desire Nº07</h3>
+<p class="ref">Ref. olfativa: Pure XS</p>
+<p class="desc">Oriental quente e adocicado, com baunilha e especiarias sensuais.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Victory Nº08</h3>
+<p class="ref">Ref. olfativa: Invictus</p>
+<p class="desc">Fresco aquático com fundo amadeirado limpo e energético.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Noir Nº09</h3>
+<p class="ref">Ref. olfativa: Polo Black</p>
+<p class="desc">Amadeirado frutado elegante, intenso e noturno.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Myth Nº10</h3>
+<p class="ref">Ref. olfativa: Eros Versace</p>
+<p class="desc">Aromático adocicado com baunilha, fresco e extremamente marcante.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
 </div>
 
 </div>
 </section>
 
+<!-- ================= FEMININOS ================= -->
 <section id="fem" class="hidden">
 <div class="grid">
 
 <div class="card">
- <img src="img/olympea.jpg">
- <h3>LS Goddess No.12</h3>
- <p class="desc">Baunilha envolvente com flores brancas e acorde salgado sofisticado.</p>
- <p class="ref">As características olfativas podem lembrar Olympea.</p>
- <div class="price">R$ 129,97</div>
- <a class="buy" href="produto-ls-goddess-12.html">Ver detalhes</a>
+<h3>LS Rose Glow Nº11</h3>
+<p class="ref">Ref. olfativa: 212 VIP Rosé</p>
+<p class="desc">Floral frutado elegante, feminino e moderno.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Goddess Nº12</h3>
+<p class="ref">Ref. olfativa: Olympea</p>
+<p class="desc">Oriental floral com baunilha e acorde salgado sofisticado.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Light Bloom Nº13</h3>
+<p class="ref">Ref. olfativa: Light Blue</p>
+<p class="desc">Floral frutado fresco, leve e radiante.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Femme Provoc Nº14</h3>
+<p class="ref">Ref. olfativa: Scandal Feminino</p>
+<p class="desc">Oriental floral doce, intenso e sensual.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Signature Nº15</h3>
+<p class="ref">Ref. olfativa: Montblanc Signature</p>
+<p class="desc">Floral oriental cremoso, elegante e confortável.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Noir Femme Nº16</h3>
+<p class="ref">Ref. olfativa: L’Interdit</p>
+<p class="desc">Floral branco intenso com fundo adocicado e sofisticado.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Mademoiselle Nº17</h3>
+<p class="ref">Ref. olfativa: Coco Mademoiselle</p>
+<p class="desc">Chipre floral elegante, clássico e atemporal.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Chance Nº18</h3>
+<p class="ref">Ref. olfativa: Chance</p>
+<p class="desc">Floral fresco e vibrante, jovem e sofisticado.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Divine Nº19</h3>
+<p class="ref">Ref. olfativa: Good Girl</p>
+<p class="desc">Oriental floral doce, sensual e poderoso.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
+</div>
+
+<div class="card">
+<h3>LS Crystal Nº20</h3>
+<p class="ref">Ref. olfativa: Omnia Crystalline</p>
+<p class="desc">Floral aquático delicado, limpo e sofisticado.</p>
+<p class="price">R$ 129,97</p>
+<a class="btn" href="#">Ver detalhes</a>
 </div>
 
 </div>
@@ -109,16 +303,19 @@ footer{
 
 <footer>
 <strong>Política de Transparência Jurídica</strong><br><br>
-Este é um produto original da marca LS Essence. Os produtos de outras marcas usados como referência olfativa não possuem qualquer vínculo com a LS Essence nem com este produto. Citar referências olfativas não constitui promessa de produto idêntico nem da mesma experiência sensorial, servindo apenas para indicar uma direção olfativa.
+Este é um produto original da marca LS Essence. Os produtos de outras marcas usados como referência
+olfativa não possuem qualquer vínculo com a LS Essence e nem com este produto.
+Citar referências olfativas não constitui promessa de produto idêntico nem da mesma experiência sensorial,
+servindo apenas para indicar uma direção olfativa.
 </footer>
 
 <script>
-function showTab(t,b){
+function showTab(tab,btn){
  document.getElementById('masc').classList.add('hidden');
  document.getElementById('fem').classList.add('hidden');
- document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
- document.getElementById(t).classList.remove('hidden');
- b.classList.add('active');
+ document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+ document.getElementById(tab).classList.remove('hidden');
+ btn.classList.add('active');
 }
 </script>
 
