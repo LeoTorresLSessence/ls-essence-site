@@ -11,103 +11,133 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: #0b0b0b;
-  color: #fff;
+  background: radial-gradient(circle at top, #111 0%, #000 60%);
+  color: #ffffff;
 }
 
+/* HEADER */
 header {
   text-align: center;
-  padding: 40px 20px;
-  border-bottom: 1px solid #222;
+  padding: 50px 20px 35px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 header h1 {
-  letter-spacing: 4px;
-  font-size: 30px;
-  margin-bottom: 8px;
+  letter-spacing: 5px;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
 header p {
-  color: #aaa;
+  color: #b5b5b5;
   font-size: 14px;
 }
 
+/* TABS */
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 25px 0;
+  gap: 14px;
+  margin: 35px 0 10px;
 }
 
 .tabs button {
-  background: none;
-  border: 1px solid #444;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 26px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.tabs button:hover {
+  background: rgba(255,255,255,0.08);
 }
 
 .tabs button.active {
-  background: #fff;
+  background: #ffffff;
   color: #000;
 }
 
+/* SEÇÕES */
 section {
-  padding: 20px;
+  padding: 25px 20px 50px;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 22px;
 }
 
+/* CARD */
 .card {
-  background: #141414;
-  border-radius: 10px;
-  padding: 20px;
+  background: linear-gradient(180deg, #161616, #0f0f0f);
+  border-radius: 18px;
+  padding: 22px 18px 25px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
 }
 
 .card img {
   width: 100%;
-  max-width: 180px;
-  margin-bottom: 15px;
+  max-width: 170px;
+  margin-bottom: 18px;
 }
 
 .card h3 {
   font-size: 15px;
-  margin-bottom: 8px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #f1f1f1;
 }
 
 .price {
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 19px;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
 }
 
+/* BOTÃO */
 .buy {
   display: block;
-  background: #fff;
+  background: linear-gradient(135deg, #ffffff, #dcdcdc);
   color: #000;
-  padding: 12px;
+  padding: 13px;
   text-decoration: none;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
+.buy:hover {
+  transform: scale(1.04);
+}
+
+/* UTIL */
 .hidden {
   display: none;
 }
 
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 25px;
+  padding: 30px 20px;
   font-size: 12px;
   color: #777;
-  border-top: 1px solid #222;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
+/* DESKTOP */
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
@@ -120,58 +150,45 @@ footer {
 
 <header>
   <h1>LS ESSENCE</h1>
-  <p>Perfumes inspirados em fragrâncias internacionais</p>
+  <p>Perfumes inspirados em fragrâncias importadas</p>
 </header>
 
 <div class="tabs">
-  <button class="active" onclick="showTab('masculino')">Masculino</button>
-  <button onclick="showTab('feminino')">Feminino</button>
+  <button class="active" onclick="showTab('masculino', this)">Masculino</button>
+  <button onclick="showTab('feminino', this)">Feminino</button>
 </div>
 
 <section id="masculino">
   <div class="grid">
-    <div class="card">
-      <img src="img/sauvage.jpg">
-      <h3>Inspirado no Sauvage Dior</h3>
-      <div class="price">R$ 129,97</div>
-      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
-    </div>
 
-    <div class="card">
-      <img src="img/212vipmen.jpg">
-      <h3>Inspirado no 212 VIP Men</h3>
-      <div class="price">R$ 129,97</div>
-      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
-    </div>
+    <div class="card"><img src="img/sauvage.jpg"><h3>Inspirado no Sauvage Dior</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/212vipmen.jpg"><h3>Inspirado no 212 VIP Men</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/aventus.jpg"><h3>Inspirado no Creed Aventus</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/ferrariblack.jpg"><h3>Inspirado no Ferrari Black</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/onemillion.jpg"><h3>Inspirado no One Million</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/scandalmen.jpg"><h3>Inspirado no Scandal</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/purexs.jpg"><h3>Inspirado no Pure XS</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/invictus.jpg"><h3>Inspirado no Invictus</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/poloblack.jpg"><h3>Inspirado no Polo Black</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/eros.jpg"><h3>Inspirado no Eros Versace</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
 
-    <div class="card">
-      <img src="img/aventus.jpg">
-      <h3>Inspirado no Creed Aventus</h3>
-      <div class="price">R$ 129,97</div>
-      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
-    </div>
-
-    <!-- Repita o mesmo padrão para os outros masculinos -->
   </div>
 </section>
 
 <section id="feminino" class="hidden">
   <div class="grid">
-    <div class="card">
-      <img src="img/212viprose.jpg">
-      <h3>Inspirado no 212 VIP Rosé</h3>
-      <div class="price">R$ 129,97</div>
-      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
-    </div>
 
-    <div class="card">
-      <img src="img/olympea.jpg">
-      <h3>Inspirado no Olympea</h3>
-      <div class="price">R$ 129,97</div>
-      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
-    </div>
+    <div class="card"><img src="img/212viprose.jpg"><h3>Inspirado no 212 VIP Rosé</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/olympea.jpg"><h3>Inspirado no Olympea</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/lightblue.jpg"><h3>Inspirado no Light Blue</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/scandalfem.jpg"><h3>Inspirado no Scandal</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/signature.jpg"><h3>Inspirado no Mont Blanc Signature</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/linterdit.jpg"><h3>Inspirado no L’Interdit</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/cocomademoiselle.jpg"><h3>Inspirado no Coco Mademoiselle</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/chance.jpg"><h3>Inspirado no Chance</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/goodgirl.jpg"><h3>Inspirado no Good Girl</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card"><img src="img/omnia.jpg"><h3>Inspirado no Omnia Crystalline</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
 
-    <!-- Repita para os outros femininos -->
   </div>
 </section>
 
@@ -180,14 +197,12 @@ footer {
 </footer>
 
 <script>
-function showTab(tab) {
+function showTab(tab, btn) {
   document.getElementById('masculino').classList.add('hidden');
   document.getElementById('feminino').classList.add('hidden');
-
-  document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
-
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
   document.getElementById(tab).classList.remove('hidden');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 </script>
 
