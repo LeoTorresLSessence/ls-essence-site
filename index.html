@@ -1,92 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LS Essence | Perfumes Exclusivos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LS Essence | Perfumes Premium</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0e0e0e;
-      color: #ffffff;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      border-bottom: 1px solid #222;
-    }
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #0b0b0b;
+  color: #fff;
+}
 
-    header h1 {
-      font-size: 28px;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-    }
+header {
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom: 1px solid #222;
+}
 
-    header p {
-      color: #aaa;
-      font-size: 14px;
-    }
+header h1 {
+  letter-spacing: 4px;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
 
-    section {
-      padding: 20px;
-    }
+header p {
+  color: #aaa;
+  font-size: 14px;
+}
 
-    h2 {
-      margin: 30px 0 15px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 5px;
-      font-size: 20px;
-    }
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
+.tabs button {
+  background: none;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .card {
-      background: #161616;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-    }
+.tabs button.active {
+  background: #fff;
+  color: #000;
+}
 
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
+section {
+  padding: 20px;
+}
 
-    .price {
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
 
-    .buy {
-      display: block;
-      background: #ffffff;
-      color: #000000;
-      padding: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-    }
+.card {
+  background: #141414;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #777;
-    }
+.card img {
+  width: 100%;
+  max-width: 180px;
+  margin-bottom: 15px;
+}
 
-    @media (min-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-  </style>
+.card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.buy {
+  display: block;
+  background: #fff;
+  color: #000;
+  padding: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 12px;
+  color: #777;
+  border-top: 1px solid #222;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
 </head>
 
 <body>
@@ -96,39 +123,73 @@
   <p>Perfumes inspirados em fragrâncias importadas</p>
 </header>
 
-<section>
-  <h2>Masculinos</h2>
-  <div class="grid">
-    <div class="card"><h3>Sauvage Dior</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>212 VIP Men</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Creed Aventus</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Ferrari Black</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>One Million</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Scandal</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Pure XS</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Invictus</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Polo Black</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Eros Versace</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-  </div>
+<div class="tabs">
+  <button class="active" onclick="showTab('masculino')">Masculino</button>
+  <button onclick="showTab('feminino')">Feminino</button>
+</div>
 
-  <h2>Femininos</h2>
+<section id="masculino">
   <div class="grid">
-    <div class="card"><h3>212 VIP Rosé</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Olympea</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Light Blue</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Scandal</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Mont Blanc Signature</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>L’Interdit</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Coco Mademoiselle</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Chance</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Good Girl</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><h3>Omnia Crystalline</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+    <div class="card">
+      <img src="img/sauvage.jpg">
+      <h3>Inspirado no Sauvage Dior</h3>
+      <div class="price">R$ 129,97</div>
+      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
+    </div>
+
+    <div class="card">
+      <img src="img/212vipmen.jpg">
+      <h3>Inspirado no 212 VIP Men</h3>
+      <div class="price">R$ 129,97</div>
+      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
+    </div>
+
+    <div class="card">
+      <img src="img/aventus.jpg">
+      <h3>Inspirado no Creed Aventus</h3>
+      <div class="price">R$ 129,97</div>
+      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
+    </div>
+
+    <!-- Repita o mesmo padrão para os outros masculinos -->
+  </div>
+</section>
+
+<section id="feminino" class="hidden">
+  <div class="grid">
+    <div class="card">
+      <img src="img/212viprose.jpg">
+      <h3>Inspirado no 212 VIP Rosé</h3>
+      <div class="price">R$ 129,97</div>
+      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
+    </div>
+
+    <div class="card">
+      <img src="img/olympea.jpg">
+      <h3>Inspirado no Olympea</h3>
+      <div class="price">R$ 129,97</div>
+      <a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a>
+    </div>
+
+    <!-- Repita para os outros femininos -->
   </div>
 </section>
 
 <footer>
   © LS Essence — Todos os direitos reservados
 </footer>
+
+<script>
+function showTab(tab) {
+  document.getElementById('masculino').classList.add('hidden');
+  document.getElementById('feminino').classList.add('hidden');
+
+  document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+
+  document.getElementById(tab).classList.remove('hidden');
+  event.target.classList.add('active');
+}
+</script>
 
 </body>
 </html>
