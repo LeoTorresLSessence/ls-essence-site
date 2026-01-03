@@ -3,210 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LS Essence | Perfumes Premium</title>
+<title>LS Essence | Marca Própria de Perfumes</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --preto:#0a0a0a;
-  --cinza:#141414;
-  --cinza2:#2a2a2a;
-  --texto:#f2f2f2;
-  --muted:#b5b5b5;
-  --dourado:#c9a24d;
-  --dourado2:#e6c97a;
+ --preto:#0a0a0a;--cinza:#141414;--texto:#f2f2f2;
+ --muted:#b5b5b5;--dourado:#c9a24d;
 }
-
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:radial-gradient(circle at top,#1a1a1a 0%,#000 65%);
-  color:var(--texto);
+ font-family:Arial,Helvetica,sans-serif;
+ background:#000;color:var(--texto);
 }
-
-header{
-  text-align:center;
-  padding:55px 20px 40px;
-  border-bottom:1px solid rgba(201,162,77,.25);
+header{text-align:center;padding:50px 20px;border-bottom:1px solid rgba(201,162,77,.3)}
+.logo{width:160px;background:#fff;padding:16px;border-radius:16px;margin-bottom:15px}
+.badge{
+ display:inline-block;
+ border:1px solid var(--dourado);
+ padding:6px 14px;
+ border-radius:20px;
+ font-size:12px;
+ margin-top:10px;
+ color:var(--dourado);
 }
-
-.logo{
-  width:160px;
-  max-width:70%;
-  margin-bottom:18px;
-}
-
-header p{
-  color:var(--muted);
-  font-size:14px;
-}
-
-.tabs{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin:35px 0 10px;
-}
-
+.tabs{display:flex;justify-content:center;gap:12px;margin:30px}
 .tabs button{
-  background:transparent;
-  border:1px solid rgba(201,162,77,.5);
-  color:var(--dourado);
-  padding:12px 28px;
-  border-radius:30px;
-  cursor:pointer;
-  font-weight:bold;
+ background:none;border:1px solid var(--dourado);
+ color:var(--dourado);padding:10px 22px;border-radius:30px;
 }
-
-.tabs button.active{
-  background:linear-gradient(135deg,var(--dourado),var(--dourado2));
-  color:#000;
-  border:none;
-}
-
-section{padding:30px 20px 55px}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:26px;
-}
-
+.tabs button.active{background:var(--dourado);color:#000}
+.grid{display:grid;grid-template-columns:1fr;gap:24px;padding:20px}
 .card{
-  background:linear-gradient(180deg,var(--cinza),var(--preto));
-  border-radius:22px;
-  padding:26px 20px 30px;
-  text-align:center;
-  border:1px solid rgba(201,162,77,.15);
+ background:#111;padding:22px;border-radius:20px;
+ border:1px solid rgba(201,162,77,.2);text-align:center
 }
-
-.card img{
-  width:100%;
-  max-width:170px;
-  margin-bottom:18px;
-}
-
-.card h3{
-  font-size:15px;
-  margin-bottom:10px;
-}
-
-.desc{
-  font-size:13px;
-  line-height:1.5;
-  color:var(--muted);
-  margin-bottom:18px;
-}
-
-.price{
-  font-size:19px;
-  margin-bottom:18px;
-  color:var(--dourado2);
-}
-
+.card img{max-width:150px;margin-bottom:12px}
+.card h3{font-size:15px;margin-bottom:8px}
+.desc{font-size:13px;color:var(--muted);margin-bottom:10px}
+.ref{font-size:11px;color:#888;margin-bottom:12px}
+.price{color:var(--dourado);font-size:18px;margin-bottom:12px}
 .buy{
-  display:block;
-  background:linear-gradient(135deg,var(--dourado),var(--dourado2));
-  color:#000;
-  padding:14px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
+ display:block;background:var(--dourado);color:#000;
+ padding:12px;border-radius:30px;text-decoration:none;font-weight:bold
 }
-
 .hidden{display:none}
-
 footer{
-  text-align:center;
-  padding:30px;
-  font-size:12px;
-  color:var(--muted);
-  border-top:1px solid rgba(201,162,77,.25);
+ padding:30px;font-size:11px;color:#aaa;
+ border-top:1px solid rgba(201,162,77,.3);line-height:1.6
 }
-
-@media(min-width:768px){
-  .grid{grid-template-columns:repeat(4,1fr)}
-}
+@media(min-width:768px){.grid{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="img/logo.jpg" alt="LS Essence Logo" class="logo">
-  <p>Perfumes inspirados em fragrâncias importadas</p>
+ <img src="img/logo.png" class="logo">
+ <p>Perfumes inspirados em fragrâncias importadas</p>
+ <div class="badge">Marca Própria LS Essence</div>
 </header>
 
 <div class="tabs">
-  <button class="active" onclick="showTab('masculino',this)">Masculino</button>
-  <button onclick="showTab('feminino',this)">Feminino</button>
+ <button class="active" onclick="showTab('masc',this)">Masculino</button>
+ <button onclick="showTab('fem',this)">Feminino</button>
 </div>
 
-<!-- MASCULINO -->
-<section id="masculino">
+<section id="masc">
 <div class="grid">
 
-<div class="card"><img src="img/sauvage.jpg"><h3>Sauvage Dior</h3><p class="desc">Fresco e intenso, com notas cítricas, especiarias e fundo amadeirado. Moderno e marcante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+<div class="card">
+ <img src="img/sauvage.jpg">
+ <h3>LS Wild No.01</h3>
+ <p class="desc">Fresco aromático com especiarias, ambroxan e fundo amadeirado intenso.</p>
+ <p class="ref">As características olfativas podem lembrar Sauvage Dior.</p>
+ <div class="price">R$ 129,97</div>
+ <a class="buy" href="produto-ls-wild-01.html">Ver detalhes</a>
+</div>
 
-<div class="card"><img src="img/212vipmen.jpg"><h3>212 VIP Men</h3><p class="desc">Vodka gelada, especiarias e madeira. Sofisticação urbana e presença.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/aventus.jpg"><h3>Creed Aventus</h3><p class="desc">Abacaxi, bergamota e madeiras nobres. Poder e liderança.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/ferrariblack.jpg"><h3>Ferrari Black</h3><p class="desc">Baunilha, frutas e notas quentes. Elegante e sedutor.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/onemillion.jpg"><h3>One Million</h3><p class="desc">Canela, couro e âmbar. Luxo e ousadia.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/scandalmen.jpg"><h3>Scandal</h3><p class="desc">Mel, especiarias e madeira. Provocante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/purexs.jpg"><h3>Pure XS</h3><p class="desc">Baunilha cremosa e especiarias. Extremamente sensual.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/invictus.jpg"><h3>Invictus</h3><p class="desc">Notas aquáticas e grapefruit. Energia e vitória.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/poloblack.jpg"><h3>Polo Black</h3><p class="desc">Manga gelada e patchouli. Urbano e sofisticado.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/eros.jpg"><h3>Eros Versace</h3><p class="desc">Baunilha, menta e maçã verde. Intensidade e desejo.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+<div class="card">
+ <img src="img/aventus.jpg">
+ <h3>LS Crown No.03</h3>
+ <p class="desc">Frutado sofisticado com notas de abacaxi, bergamota e madeiras nobres.</p>
+ <p class="ref">As características olfativas podem lembrar Creed Aventus.</p>
+ <div class="price">R$ 129,97</div>
+ <a class="buy" href="produto-ls-crown-03.html">Ver detalhes</a>
+</div>
 
 </div>
 </section>
 
-<!-- FEMININO -->
-<section id="feminino" class="hidden">
+<section id="fem" class="hidden">
 <div class="grid">
 
-<div class="card"><img src="img/212viprose.jpg"><h3>212 VIP Rosé</h3><p class="desc">Champagne rosé e flores delicadas. Elegância feminina.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/olympea.jpg"><h3>Olympea</h3><p class="desc">Baunilha salgada e flores brancas. Poder e sensualidade.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/lightblue.jpg"><h3>Light Blue</h3><p class="desc">Limão siciliano e frescor floral. Leve e vibrante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/scandalfem.jpg"><h3>Scandal</h3><p class="desc">Mel intenso e flores brancas. Ousado e sedutor.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/signature.jpg"><h3>Mont Blanc Signature</h3><p class="desc">Baunilha cremosa e flores suaves. Conforto e elegância.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/linterdit.jpg"><h3>L’Interdit</h3><p class="desc">Floral intenso e fundo marcante. Mistério e sofisticação.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/cocomademoiselle.jpg"><h3>Coco Mademoiselle</h3><p class="desc">Cítrico elegante com patchouli. Clássico atemporal.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/chance.jpg"><h3>Chance</h3><p class="desc">Floral leve e delicado. Jovem e sofisticado.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/goodgirl.jpg"><h3>Good Girl</h3><p class="desc">Café, baunilha e cacau. Feminilidade poderosa.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-
-<div class="card"><img src="img/omnia.jpg"><h3>Omnia Crystalline</h3><p class="desc">Floral aquático delicado. Leveza e pureza.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+<div class="card">
+ <img src="img/olympea.jpg">
+ <h3>LS Goddess No.12</h3>
+ <p class="desc">Baunilha envolvente com flores brancas e acorde salgado sofisticado.</p>
+ <p class="ref">As características olfativas podem lembrar Olympea.</p>
+ <div class="price">R$ 129,97</div>
+ <a class="buy" href="produto-ls-goddess-12.html">Ver detalhes</a>
+</div>
 
 </div>
 </section>
 
 <footer>
-© LS Essence — Todos os direitos reservados
+<strong>Política de Transparência Jurídica</strong><br><br>
+Este é um produto original da marca LS Essence. Os produtos de outras marcas usados como referência olfativa não possuem qualquer vínculo com a LS Essence nem com este produto. Citar referências olfativas não constitui promessa de produto idêntico nem da mesma experiência sensorial, servindo apenas para indicar uma direção olfativa.
 </footer>
 
 <script>
-function showTab(tab,btn){
-  document.getElementById('masculino').classList.add('hidden');
-  document.getElementById('feminino').classList.add('hidden');
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-  document.getElementById(tab).classList.remove('hidden');
-  btn.classList.add('active');
+function showTab(t,b){
+ document.getElementById('masc').classList.add('hidden');
+ document.getElementById('fem').classList.add('hidden');
+ document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+ document.getElementById(t).classList.remove('hidden');
+ b.classList.add('active');
 }
 </script>
 
