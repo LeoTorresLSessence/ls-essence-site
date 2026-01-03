@@ -8,140 +8,126 @@
 <style>
 * { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: radial-gradient(circle at top, #111 0%, #000 60%);
-  color: #ffffff;
+:root{
+  --preto:#0a0a0a;
+  --cinza:#141414;
+  --cinza2:#2a2a2a;
+  --texto:#f2f2f2;
+  --muted:#b5b5b5;
+  --dourado:#c9a24d;
+  --dourado2:#e6c97a;
 }
 
-/* HEADER */
-header {
-  text-align: center;
-  padding: 50px 20px 35px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:radial-gradient(circle at top,#1a1a1a 0%,#000 65%);
+  color:var(--texto);
 }
 
-header h1 {
-  letter-spacing: 5px;
-  font-size: 32px;
-  margin-bottom: 10px;
+header{
+  text-align:center;
+  padding:55px 20px 40px;
+  border-bottom:1px solid rgba(201,162,77,.25);
 }
 
-header p {
-  color: #b5b5b5;
-  font-size: 14px;
+header h1{
+  letter-spacing:6px;
+  font-size:32px;
+  margin-bottom:10px;
 }
 
-/* TABS */
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin: 35px 0 10px;
+header p{
+  color:var(--muted);
+  font-size:14px;
 }
 
-.tabs button {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.25);
-  color: #fff;
-  padding: 12px 26px;
-  cursor: pointer;
-  font-weight: 600;
-  border-radius: 30px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+.tabs{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin:35px 0 10px;
 }
 
-.tabs button:hover {
-  background: rgba(255,255,255,0.08);
+.tabs button{
+  background:transparent;
+  border:1px solid rgba(201,162,77,.5);
+  color:var(--dourado);
+  padding:12px 28px;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.tabs button.active {
-  background: #ffffff;
-  color: #000;
+.tabs button.active{
+  background:linear-gradient(135deg,var(--dourado),var(--dourado2));
+  color:#000;
+  border:none;
 }
 
-/* SEÇÕES */
-section {
-  padding: 25px 20px 50px;
+section{ padding:30px 20px 55px; }
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:26px;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 22px;
+.card{
+  background:linear-gradient(180deg,var(--cinza),var(--preto));
+  border-radius:22px;
+  padding:26px 20px 30px;
+  text-align:center;
+  border:1px solid rgba(201,162,77,.15);
 }
 
-/* CARD */
-.card {
-  background: linear-gradient(180deg, #161616, #0f0f0f);
-  border-radius: 18px;
-  padding: 22px 18px 25px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card img{
+  width:100%;
+  max-width:170px;
+  margin-bottom:18px;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+.card h3{
+  font-size:15px;
+  margin-bottom:10px;
+  color:#fff;
 }
 
-.card img {
-  width: 100%;
-  max-width: 170px;
-  margin-bottom: 18px;
+.desc{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  margin-bottom:18px;
 }
 
-.card h3 {
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 10px;
-  color: #f1f1f1;
+.price{
+  font-size:19px;
+  margin-bottom:18px;
+  color:var(--dourado2);
 }
 
-.price {
-  font-size: 19px;
-  margin-bottom: 18px;
-  letter-spacing: 1px;
+.buy{
+  display:block;
+  background:linear-gradient(135deg,var(--dourado),var(--dourado2));
+  color:#000;
+  padding:14px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-/* BOTÃO */
-.buy {
-  display: block;
-  background: linear-gradient(135deg, #ffffff, #dcdcdc);
-  color: #000;
-  padding: 13px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 30px;
-  transition: all 0.3s ease;
+.hidden{ display:none; }
+
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:12px;
+  color:var(--muted);
+  border-top:1px solid rgba(201,162,77,.25);
 }
 
-.buy:hover {
-  transform: scale(1.04);
-}
-
-/* UTIL */
-.hidden {
-  display: none;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 12px;
-  color: #777;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+@media(min-width:768px){
+  .grid{ grid-template-columns:repeat(4,1fr); }
 }
 </style>
 </head>
@@ -154,53 +140,73 @@ footer {
 </header>
 
 <div class="tabs">
-  <button class="active" onclick="showTab('masculino', this)">Masculino</button>
-  <button onclick="showTab('feminino', this)">Feminino</button>
+  <button class="active" onclick="showTab('masculino',this)">Masculino</button>
+  <button onclick="showTab('feminino',this)">Feminino</button>
 </div>
 
+<!-- ================= MASCULINO ================= -->
 <section id="masculino">
-  <div class="grid">
+<div class="grid">
 
-    <div class="card"><img src="img/sauvage.jpg"><h3>Inspirado no Sauvage Dior</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/212vipmen.jpg"><h3>Inspirado no 212 VIP Men</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/aventus.jpg"><h3>Inspirado no Creed Aventus</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/ferrariblack.jpg"><h3>Inspirado no Ferrari Black</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/onemillion.jpg"><h3>Inspirado no One Million</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/scandalmen.jpg"><h3>Inspirado no Scandal</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/purexs.jpg"><h3>Inspirado no Pure XS</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/invictus.jpg"><h3>Inspirado no Invictus</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/poloblack.jpg"><h3>Inspirado no Polo Black</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/eros.jpg"><h3>Inspirado no Eros Versace</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+<div class="card"><img src="img/sauvage.jpg"><h3>Sauvage Dior</h3><p class="desc">Fresco e intenso, com notas cítricas, especiarias e fundo amadeirado. Uma fragrância marcante, moderna e extremamente masculina.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
 
-  </div>
+<div class="card"><img src="img/212vipmen.jpg"><h3>212 VIP Men</h3><p class="desc">Aromático e sofisticado, mistura vodka gelada, especiarias e madeiras quentes. Ideal para quem gosta de presença e exclusividade.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/aventus.jpg"><h3>Creed Aventus</h3><p class="desc">Notas frutadas com abacaxi, bergamota e fundo amadeirado intenso. Poder, sucesso e liderança em forma de perfume.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/ferrariblack.jpg"><h3>Ferrari Black</h3><p class="desc">Doce na medida certa, com baunilha, frutas e notas amadeiradas. Elegante e sedutor para uso noturno.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/onemillion.jpg"><h3>One Million</h3><p class="desc">Especiado e adocicado, com canela, couro e âmbar. Perfume ousado, luxuoso e extremamente marcante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/scandalmen.jpg"><h3>Scandal</h3><p class="desc">Doce e intenso com mel, especiarias e madeira. Provocante e envolvente, perfeito para noites especiais.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/purexs.jpg"><h3>Pure XS</h3><p class="desc">Baunilha cremosa com gengibre e especiarias quentes. Sensual, moderno e extremamente sedutor.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/invictus.jpg"><h3>Invictus</h3><p class="desc">Fresco e esportivo, com notas aquáticas, grapefruit e madeira. Energia, vitória e confiança.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/poloblack.jpg"><h3>Polo Black</h3><p class="desc">Frutado e amadeirado, com manga gelada e patchouli. Elegante, urbano e sofisticado.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/eros.jpg"><h3>Eros Versace</h3><p class="desc">Doce e envolvente, com baunilha, menta e maçã verde. Intensidade e sensualidade moderna.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+</div>
 </section>
 
+<!-- ================= FEMININO ================= -->
 <section id="feminino" class="hidden">
-  <div class="grid">
+<div class="grid">
 
-    <div class="card"><img src="img/212viprose.jpg"><h3>Inspirado no 212 VIP Rosé</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/olympea.jpg"><h3>Inspirado no Olympea</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/lightblue.jpg"><h3>Inspirado no Light Blue</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/scandalfem.jpg"><h3>Inspirado no Scandal</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/signature.jpg"><h3>Inspirado no Mont Blanc Signature</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/linterdit.jpg"><h3>Inspirado no L’Interdit</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/cocomademoiselle.jpg"><h3>Inspirado no Coco Mademoiselle</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/chance.jpg"><h3>Inspirado no Chance</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/goodgirl.jpg"><h3>Inspirado no Good Girl</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
-    <div class="card"><img src="img/omnia.jpg"><h3>Inspirado no Omnia Crystalline</h3><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+<div class="card"><img src="img/212viprose.jpg"><h3>212 VIP Rosé</h3><p class="desc">Fresco e elegante, com champagne rosé, frutas e flores delicadas. Feminino e sofisticado.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
 
-  </div>
+<div class="card"><img src="img/olympea.jpg"><h3>Olympea</h3><p class="desc">Baunilha salgada com flores brancas. Poderoso, sensual e marcante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/lightblue.jpg"><h3>Light Blue</h3><p class="desc">Refrescante e cítrico, com limão siciliano e notas florais. Leve, elegante e vibrante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/scandalfem.jpg"><h3>Scandal</h3><p class="desc">Doce intenso com mel e flores brancas. Feminilidade ousada e sedutora.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/signature.jpg"><h3>Mont Blanc Signature</h3><p class="desc">Cremoso e confortável, com baunilha e flores brancas. Elegância moderna e delicada.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/linterdit.jpg"><h3>L’Interdit</h3><p class="desc">Floral intenso com fundo adocicado. Sofisticação, mistério e presença marcante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/cocomademoiselle.jpg"><h3>Coco Mademoiselle</h3><p class="desc">Cítrico elegante com patchouli e flores. Clássico feminino, refinado e atemporal.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/chance.jpg"><h3>Chance</h3><p class="desc">Leve e floral, com toque adocicado e fresco. Jovem, delicado e elegante.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/goodgirl.jpg"><h3>Good Girl</h3><p class="desc">Doce intenso com café, baunilha e cacau. Feminilidade ousada e poderosa.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+<div class="card"><img src="img/omnia.jpg"><h3>Omnia Crystalline</h3><p class="desc">Floral aquático delicado, com notas limpas e sofisticadas. Leveza e elegância.</p><div class="price">R$ 129,97</div><a class="buy" href="SEU_LINK_PIX">Comprar com Pix</a></div>
+
+</div>
 </section>
 
 <footer>
-  © LS Essence — Todos os direitos reservados
+© LS Essence — Todos os direitos reservados
 </footer>
 
 <script>
-function showTab(tab, btn) {
+function showTab(tab,btn){
   document.getElementById('masculino').classList.add('hidden');
   document.getElementById('feminino').classList.add('hidden');
-  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
   document.getElementById(tab).classList.remove('hidden');
   btn.classList.add('active');
 }
