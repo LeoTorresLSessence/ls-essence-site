@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Pedido | LS Essence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  background:#000;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+  margin:0;
+}
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:20px;
+}
+h1{
+  text-align:center;
+  color:#c9a24d;
+  margin-bottom:10px;
+}
+h2{
+  color:#c9a24d;
+  margin-top:30px;
+}
+.item{
+  background:#111;
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.item img{
+  width:70px;
+  border-radius:12px;
+}
+.item label{
+  flex:1;
+  font-size:14px;
+}
+.qtd{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.qtd button{
+  background:#c9a24d;
+  border:none;
+  padding:6px 10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.qtd span{
+  min-width:20px;
+  text-align:center;
+}
+.total{
+  font-size:20px;
+  text-align:center;
+  margin:25px 0;
+  color:#c9a24d;
+}
+.btn{
+  display:block;
+  width:100%;
+  background:#c9a24d;
+  color:#000;
+  text-align:center;
+  padding:14px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+small{
+  display:block;
+  margin-top:20px;
+  font-size:11px;
+  color:#aaa;
+  text-align:center;
+}
+</style>
+
+<script>
+const preco = 129.97;
+let carrinho = {};
+
+function alterar(nome, delta){
+  if(!carrinho[nome]) carrinho[nome] = 0;
+  carrinho[nome] += delta;
+  if(carrinho[nome] < 0) carrinho[nome] = 0;
+  document.getElementById(nome).innerText = carrinho[nome];
+  atualizar();
+}
+
+function atualizar(){
+  let total = 0;
+  let msg = "Olá! Gostaria de fazer o pedido:%0A%0A";
+  for(let p in carrinho){
+    if(carrinho[p] > 0){
+      total += carrinho[p] * preco;
+      msg += `• ${p} - ${carrinho[p]} un.%0A`;
+    }
+  }
+  msg += `%0AValor total: R$ ${total.toFixed(2)}%0APagamento via PIX.`;
+  document.getElementById("total").innerText = "Total: R$ " + total.toFixed(2);
+  document.getElementById("whats").href =
+   "https://wa.me/5519988357427?text=" + msg;
+}
+</script>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Monte seu pedido</h1>
+
+<h2>Masculinos</h2>
+
+<!-- MASCULINOS -->
+<div class="item"><img src="img/sauvage.jpg"><label>LS Wild Nº01</label><div class="qtd"><button onclick="alterar('LS Wild Nº01',-1)">-</button><span id="LS Wild Nº01">0</span><button onclick="alterar('LS Wild Nº01',1)">+</button></div></div>
+<div class="item"><img src="img/212vipmen.jpg"><label>LS Elite Nº02</label><div class="qtd"><button onclick="alterar('LS Elite Nº02',-1)">-</button><span id="LS Elite Nº02">0</span><button onclick="alterar('LS Elite Nº02',1)">+</button></div></div>
+<div class="item"><img src="img/aventus.jpg"><label>LS Crown Nº03</label><div class="qtd"><button onclick="alterar('LS Crown Nº03',-1)">-</button><span id="LS Crown Nº03">0</span><button onclick="alterar('LS Crown Nº03',1)">+</button></div></div>
+<div class="item"><img src="img/ferrariblack.jpg"><label>LS Shadow Nº04</label><div class="qtd"><button onclick="alterar('LS Shadow Nº04',-1)">-</button><span id="LS Shadow Nº04">0</span><button onclick="alterar('LS Shadow Nº04',1)">+</button></div></div>
+<div class="item"><img src="img/onemillion.jpg"><label>LS Gold Nº05</label><div class="qtd"><button onclick="alterar('LS Gold Nº05',-1)">-</button><span id="LS Gold Nº05">0</span><button onclick="alterar('LS Gold Nº05',1)">+</button></div></div>
+<div class="item"><img src="img/scandalmen.jpg"><label>LS Rebel Nº06</label><div class="qtd"><button onclick="alterar('LS Rebel Nº06',-1)">-</button><span id="LS Rebel Nº06">0</span><button onclick="alterar('LS Rebel Nº06',1)">+</button></div></div>
+<div class="item"><img src="img/purexs.jpg"><label>LS Desire Nº07</label><div class="qtd"><button onclick="alterar('LS Desire Nº07',-1)">-</button><span id="LS Desire Nº07">0</span><button onclick="alterar('LS Desire Nº07',1)">+</button></div></div>
+<div class="item"><img src="img/invictus.jpg"><label>LS Victory Nº08</label><div class="qtd"><button onclick="alterar('LS Victory Nº08',-1)">-</button><span id="LS Victory Nº08">0</span><button onclick="alterar('LS Victory Nº08',1)">+</button></div></div>
+<div class="item"><img src="img/poloblack.jpg"><label>LS Night Nº09</label><div class="qtd"><button onclick="alterar('LS Night Nº09',-1)">-</button><span id="LS Night Nº09">0</span><button onclick="alterar('LS Night Nº09',1)">+</button></div></div>
+<div class="item"><img src="img/eros.jpg"><label>LS Intense Nº10</label><div class="qtd"><button onclick="alterar('LS Intense Nº10',-1)">-</button><span id="LS Intense Nº10">0</span><button onclick="alterar('LS Intense Nº10',1)">+</button></div></div>
+
+<h2>Femininos</h2>
+
+<!-- FEMININOS -->
+<div class="item"><img src="img/212viprose.jpg"><label>LS Rose Nº11</label><div class="qtd"><button onclick="alterar('LS Rose Nº11',-1)">-</button><span id="LS Rose Nº11">0</span><button onclick="alterar('LS Rose Nº11',1)">+</button></div></div>
+<div class="item"><img src="img/olympea.jpg"><label>LS Goddess Nº12</label><div class="qtd"><button onclick="alterar('LS Goddess Nº12',-1)">-</button><span id="LS Goddess Nº12">0</span><button onclick="alterar('LS Goddess Nº12',1)">+</button></div></div>
+<div class="item"><img src="img/lightblue.jpg"><label>LS Fresh Nº13</label><div class="qtd"><button onclick="alterar('LS Fresh Nº13',-1)">-</button><span id="LS Fresh Nº13">0</span><button onclick="alterar('LS Fresh Nº13',1)">+</button></div></div>
+<div class="item"><img src="img/scandal.jpg"><label>LS Bold Nº14</label><div class="qtd"><button onclick="alterar('LS Bold Nº14',-1)">-</button><span id="LS Bold Nº14">0</span><button onclick="alterar('LS Bold Nº14',1)">+</button></div></div>
+<div class="item"><img src="img/signature.jpg"><label>LS Pure Nº15</label><div class="qtd"><button onclick="alterar('LS Pure Nº15',-1)">-</button><span id="LS Pure Nº15">0</span><button onclick="alterar('LS Pure Nº15',1)">+</button></div></div>
+<div class="item"><img src="img/linterdit.jpg"><label>LS Noir Nº16</label><div class="qtd"><button onclick="alterar('LS Noir Nº16',-1)">-</button><span id="LS Noir Nº16">0</span><button onclick="alterar('LS Noir Nº16',1)">+</button></div></div>
+<div class="item"><img src="img/cocomademoiselle.jpg"><label>LS Chic Nº17</label><div class="qtd"><button onclick="alterar('LS Chic Nº17',-1)">-</button><span id="LS Chic Nº17">0</span><button onclick="alterar('LS Chic Nº17',1)">+</button></div></div>
+<div class="item"><img src="img/chance.jpg"><label>LS Chance Nº18</label><div class="qtd"><button onclick="alterar('LS Chance Nº18',-1)">-</button><span id="LS Chance Nº18">0</span><button onclick="alterar('LS Chance Nº18',1)">+</button></div></div>
+<div class="item"><img src="img/goodgirl.jpg"><label>LS Secret Nº19</label><div class="qtd"><button onclick="alterar('LS Secret Nº19',-1)">-</button><span id="LS Secret Nº19">0</span><button onclick="alterar('LS Secret Nº19',1)">+</button></div></div>
+<div class="item"><img src="img/omniacristaline.jpg"><label>LS Crystal Nº20</label><div class="qtd"><button onclick="alterar('LS Crystal Nº20',-1)">-</button><span id="LS Crystal Nº20">0</span><button onclick="alterar('LS Crystal Nº20',1)">+</button></div></div>
+
+<div class="total" id="total">Total: R$ 0,00</div>
+
+<a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
+
+<small>
+Este é um produto original da marca LS Essence. Referências olfativas são apenas indicativas.
+</small>
+
+</div>
+
+</body>
+</html>
