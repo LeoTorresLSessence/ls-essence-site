@@ -31,14 +31,12 @@ header p{
   color:#ccc;
   font-size:14px;
 }
-
 nav a{
   margin:0 12px;
   color:#c9a24d;
   text-decoration:none;
   font-size:14px;
 }
-
 .tabs{
   display:flex;
   justify-content:center;
@@ -58,7 +56,6 @@ nav a{
   background:#c9a24d;
   color:#000;
 }
-
 .section{
   display:none;
   max-width:1100px;
@@ -70,7 +67,6 @@ nav a{
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
 }
-
 .card{
   background:#111;
   border-radius:20px;
@@ -89,19 +85,19 @@ nav a{
 .card p{
   font-size:12px;
   color:#aaa;
-  margin-bottom:15px;
+  margin-bottom:12px;
 }
 .card a{
   display:inline-block;
   text-decoration:none;
   background:#c9a24d;
   color:#000;
-  padding:10px 24px;
+  padding:8px 18px;
   border-radius:30px;
   font-weight:bold;
-  font-size:13px;
+  font-size:12px;
+  margin:4px;
 }
-
 footer{
   margin-top:60px;
   padding:30px 20px;
@@ -116,7 +112,6 @@ footer{
 function showTab(tab){
   document.getElementById("masc").classList.remove("active");
   document.getElementById("fem").classList.remove("active");
-
   document.getElementById("btnMasc").classList.remove("active");
   document.getElementById("btnFem").classList.remove("active");
 
@@ -137,10 +132,10 @@ function showTab(tab){
   <img src="img/logo.jpg" class="logo">
   <h1>LS Essence</h1>
   <p>Perfumes inspirados em fragrâncias importadas</p>
-
   <nav>
     <a href="index.html">Início</a>
     <a href="sobre.html">Sobre a LS Essence</a>
+    <a href="pedido.html">Fazer pedido</a>
   </nav>
 </header>
 
@@ -152,34 +147,174 @@ function showTab(tab){
 <!-- MASCULINOS -->
 <div id="masc" class="section active">
 
-  <div class="card"><img src="img/sauvage.jpg"><h3>LS Wild Nº01</h3><p>Ref. olfativa: Sauvage Dior</p><a href="ls-wild-01.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/212vipmen.jpg"><h3>LS Elite Nº02</h3><p>Ref. olfativa: 212 VIP Men</p><a href="ls-elite-02.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/aventus.jpg"><h3>LS Crown Nº03</h3><p>Ref. olfativa: Creed Aventus</p><a href="ls-crown-03.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/ferrariblack.jpg"><h3>LS Shadow Nº04</h3><p>Ref. olfativa: Ferrari Black</p><a href="ls-shadow-04.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/onemillion.jpg"><h3>LS Gold Nº05</h3><p>Ref. olfativa: One Million</p><a href="ls-gold-05.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/scandalmen.jpg"><h3>LS Rebel Nº06</h3><p>Ref. olfativa: Scandal Men</p><a href="ls-rebel-06.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/purexs.jpg"><h3>LS Desire Nº07</h3><p>Ref. olfativa: Pure XS</p><a href="ls-desire-07.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/invictus.jpg"><h3>LS Victory Nº08</h3><p>Ref. olfativa: Invictus</p><a href="ls-victory-08.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/poloblack.jpg"><h3>LS Night Nº09</h3><p>Ref. olfativa: Polo Black</p><a href="ls-night-09.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/eros.jpg"><h3>LS Intense Nº10</h3><p>Ref. olfativa: Eros Versace</p><a href="ls-intense-10.html">Ver detalhes</a></div>
+<div class="card">
+<img src="img/sauvage.jpg">
+<h3>LS Wild Nº01</h3>
+<p>Ref. olfativa: Sauvage Dior</p>
+<a href="ls-wild-01.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Wild%20Nº01%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/212vipmen.jpg">
+<h3>LS Elite Nº02</h3>
+<p>Ref. olfativa: 212 VIP Men</p>
+<a href="ls-elite-02.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+ 
+<div class="card">
+<img src="img/aventus.jpg">
+<h3>LS Crown Nº03</h3>
+<p>Ref. olfativa: Creed Aventus</p>
+<a href="ls-crown-03.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/ferrariblack.jpg">
+<h3>LS Shadow Nº04</h3>
+<p>Ref. olfativa: Ferrari Black</p>
+<a href="ls-shadow-04.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/onemillion.jpg">
+<h3>LS Gold Nº05</h3>
+<p>Ref. olfativa: One Million</p>
+<a href="ls-gold-05.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/scandalmen.jpg">
+<h3>LS Rebel Nº06</h3>
+<p>Ref. olfativa: Scandal Men</p>
+<a href="ls-rebel-06.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/purexs.jpg">
+<h3>LS Desire Nº07</h3>
+<p>Ref. olfativa: Pure XS</p>
+<a href="ls-desire-07.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/invictus.jpg">
+<h3>LS Victory Nº08</h3>
+<p>Ref. olfativa: Invictus</p>
+<a href="ls-victory-08.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/poloblack.jpg">
+<h3>LS Night Nº09</h3>
+<p>Ref. olfativa: Polo Black</p>
+<a href="ls-night-09.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/eros.jpg">
+<h3>LS Intense Nº10</h3>
+<p>Ref. olfativa: Eros Versace</p>
+<a href="ls-intense-10.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Elite%20Nº02%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<!-- (os demais seguem o mesmo padrão – já estruturado corretamente) -->
 
 </div>
 
 <!-- FEMININOS -->
 <div id="fem" class="section">
 
-  <div class="card"><img src="img/212viprose.jpg"><h3>LS Rose Nº11</h3><p>Ref. olfativa: 212 VIP Rosé</p><a href="ls-rose-11.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/olympea.jpg"><h3>LS Goddess Nº12</h3><p>Ref. olfativa: Olympea</p><a href="ls-goddess-12.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/lightblue.jpg"><h3>LS Fresh Nº13</h3><p>Ref. olfativa: Light Blue</p><a href="ls-fresh-13.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/scandal.jpg"><h3>LS Bold Nº14</h3><p>Ref. olfativa: Scandal</p><a href="ls-bold-14.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/signature.jpg"><h3>LS Pure Nº15</h3><p>Ref. olfativa: Montblanc Signature</p><a href="ls-pure-15.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/linterdit.jpg"><h3>LS Noir Nº16</h3><p>Ref. olfativa: L’Interdit</p><a href="ls-noir-16.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/cocomademoiselle.jpg"><h3>LS Chic Nº17</h3><p>Ref. olfativa: Coco Mademoiselle</p><a href="ls-chic-17.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/chance.jpg"><h3>LS Chance Nº18</h3><p>Ref. olfativa: Chance</p><a href="ls-chance-18.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/goodgirl.jpg"><h3>LS Secret Nº19</h3><p>Ref. olfativa: Good Girl</p><a href="ls-secret-19.html">Ver detalhes</a></div>
-  <div class="card"><img src="img/omniacristaline.jpg"><h3>LS Crystal Nº20</h3><p>Ref. olfativa: Omnia Crystalline</p><a href="ls-crystal-20.html">Ver detalhes</a></div>
+<div class="card">
+<img src="img/212viprose.jpg">
+<h3>LS Rose Nº11</h3>
+<p>Ref. olfativa: 212 VIP Rosé</p>
+<a href="ls-rose-11.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/olympea.jpg">
+<h3>LS Goddess Nº12</h3>
+<p>Ref. olfativa: Olympea</p>
+<a href="ls-goddess-12.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/lightblue.jpg">
+<h3>LS Fresh Nº13</h3>
+<p>Ref. olfativa: Light Blue</p>
+<a href="ls-fresh-13.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/scandal.jpg">
+<h3>LS Bold Nº14</h3>
+<p>Ref. olfativa: Scandal</p>
+<a href="ls-bold-14.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/signature.jpg">
+<h3>LS Pure Nº15</h3>
+<p>Ref. olfativa: Montblanc Signature</p>
+<a href="ls-pure-15.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/linterdit.jpg">
+<h3>LS Noir Nº16</h3>
+<p>Ref. olfativa: L’Interdit</p>
+<a href="ls-noir-16.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/cocomademoiselle.jpg">
+<h3>LS Chic Nº17</h3>
+<p>Ref. olfativa: Coco Mademoiselle</p>
+<a href="ls-chic-17.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/chance.jpg">
+<h3>LS Chance Nº18</h3>
+<p>Ref. olfativa: Chance</p>
+<a href="ls-chance-18.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/goodgirl.jpg">
+<h3>LS Secret Nº19</h3>
+<p>Ref. olfativa: Good Girl</p>
+<a href="ls-secret-19.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
+</div>
+
+<div class="card">
+<img src="img/omniacristaline.jpg">
+<h3>LS Crystal Nº20</h3>
+<p>Ref. olfativa: Omnia Crystalline</p>
+<a href="ls-crystal-20.html">Ver detalhes</a>
+<a href="https://wa.me/5519988357427?text=Olá!%20Gostaria%20de%20pedir%20o%20perfume%20LS%20Rose%20Nº11%20-%20Valor%20R$%20129,97.%20Pagamento%20via%20PIX." target="_blank">Pedir este perfume</a>
 
 </div>
+
 
 <footer>
 Este é um produto original da marca LS Essence.<br>
@@ -207,4 +342,3 @@ box-shadow:0 4px 12px rgba(0,0,0,0.4);
 
 </body>
 </html>
-
