@@ -47,6 +47,22 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 .qtd button{background:#c9a24d;border:none;padding:5px 9px;font-weight:bold;cursor:pointer}
 .qtd span{min-width:18px;text-align:center}
 
+.box{
+  background:#111;
+  border-radius:16px;
+  padding:16px;
+  margin-top:24px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+
 .total{font-size:20px;text-align:center;margin:22px 0;color:#c9a24d}
 .btn{display:block;width:100%;background:#c9a24d;color:#000;text-align:center;padding:14px;border-radius:30px;text-decoration:none;font-weight:bold}
 small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
@@ -117,7 +133,6 @@ function gerarLista(){
   });
   document.getElementById("masc").innerHTML=masc;
   document.getElementById("fem").innerHTML=fem;
-
   perfumes.forEach(p=>destacar(p.nome));
 }
 
@@ -132,7 +147,6 @@ function alt(n,t,d){
 function destacar(nome){
   const q30=carrinho[nome][30];
   const q100=carrinho[nome][100];
-
   const p30=(q30>1?49.9:59.9)/30;
   const p100=(q100>1?119.9:129.9)/100;
 
@@ -152,12 +166,23 @@ function destacar(nome){
 
 function atualizar(){
   let total=0;
+  let msg="🖤 *Pedido LS Essence*%0A%0A";
+
   for(let n in carrinho){
     const q30=carrinho[n][30], q100=carrinho[n][100];
-    if(q30) total+=q30*(q30>1?49.9:59.9);
-    if(q100) total+=q100*(q100>1?119.9:129.9);
+    if(q30){ total+=q30*(q30>1?49.9:59.9); msg+=`• ${n} 30mL — ${q30} un.%0A`; }
+    if(q100){ total+=q100*(q100>1?119.9:129.9); msg+=`• ${n} 100mL — ${q100} un.%0A`; }
   }
+
+  const end=document.getElementById("endereco").value;
+  const cep=document.getElementById("cep").value;
+
+  msg+=`%0A📍 *Endereço de entrega:*%0A${end}%0ACEP: ${cep}`;
+  msg+=`%0A%0A💰 *Total:* R$ ${total.toFixed(2)}`;
+  msg+=`%0A💳 Pagamento via PIX`;
+
   document.getElementById("total").innerText="Total: R$ "+total.toFixed(2);
+  document.getElementById("whats").href="https://wa.me/5519988357427?text="+msg;
 }
 
 window.onload=gerarLista;
@@ -174,9 +199,17 @@ window.onload=gerarLista;
 <h2>Femininos</h2>
 <div id="fem"></div>
 
+<div class="box">
+<h2>Endereço de entrega</h2>
+<input id="endereco" placeholder="Rua, número, bairro, cidade - UF" oninput="atualizar()">
+<input id="cep" placeholder="CEP" oninput="atualizar()">
+</div>
+
 <div class="total" id="total">Total: R$ 0,00</div>
-<a class="btn">Finalizar pedido no WhatsApp</a>
-<small>LS Essence • Referências olfativas indicativas</small>
+<a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
+
+<small>LS Essence • Referências olfativas apenas indicativas</small>
 </div>
 </body>
 </html>
+
