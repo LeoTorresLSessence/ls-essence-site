@@ -23,8 +23,8 @@ h1{
 }
 h2{
   color:#c9a24d;
-  margin-top:30px;
-  border-bottom:1px solid #222;
+  margin-top:35px;
+  border-bottom:1px solid #333;
   padding-bottom:6px;
 }
 .item{
@@ -38,9 +38,9 @@ h2{
 }
 .item img{
   width:65px;
-  height:65px;
-  object-fit:cover;
+  height:auto;
   border-radius:12px;
+  object-fit:cover;
 }
 .item label{
   flex:1;
@@ -74,6 +74,7 @@ input{
   margin-top:10px;
   border-radius:10px;
   border:none;
+  outline:none;
 }
 .total{
   font-size:20px;
@@ -98,18 +99,6 @@ input{
   margin-top:10px;
   text-align:center;
 }
-.progress{
-  background:#222;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:10px;
-}
-.progress-bar{
-  height:8px;
-  width:0%;
-  background:#c9a24d;
-  transition:width .4s ease;
-}
 small{
   display:block;
   margin-top:20px;
@@ -118,112 +107,45 @@ small{
   text-align:center;
 }
 </style>
-
-<script>
-const preco = 129.97;
-const fretePadrao = 20.00;
-const freteGratisValor = 300;
-let carrinho = {};
-
-function alterar(nome, delta){
-  if(!carrinho[nome]) carrinho[nome] = 0;
-  carrinho[nome] += delta;
-  if(carrinho[nome] < 0) carrinho[nome] = 0;
-  document.getElementById(nome).innerText = carrinho[nome];
-  atualizar();
-}
-
-function atualizar(){
-  let subtotal = 0;
-  let msg = "🖤 *Pedido LS Essence*%0A%0A";
-
-  for(let p in carrinho){
-    if(carrinho[p] > 0){
-      subtotal += carrinho[p] * preco;
-      msg += `• ${p} — ${carrinho[p]} un.%0A`;
-    }
-  }
-
-  let frete = subtotal >= freteGratisValor ? 0 : fretePadrao;
-  let progresso = Math.min((subtotal / freteGratisValor) * 100, 100);
-
-  document.getElementById("progressBar").style.width = progresso + "%";
-
-  const endereco = document.getElementById("endereco").value;
-  const cep = document.getElementById("cep").value;
-
-  msg += `%0A📍 *Endereço:*%0A${endereco}%0ACEP: ${cep}`;
-  msg += `%0A%0A🚚 *Frete:* ${frete === 0 ? "GRÁTIS 🎉" : "R$ " + frete.toFixed(2)}`;
-  msg += `%0A⏳ *Prazo:* Produção até 6 dias úteis + entrega até 4 dias úteis`;
-  msg += `%0A(Pronta entrega: apenas prazo de envio)`;
-
-  const total = subtotal + frete;
-
-  msg += `%0A%0A💰 *Total:* R$ ${total.toFixed(2)}`;
-  msg += `%0A💳 Pagamento via PIX`;
-
-  document.getElementById("total").innerText =
-    `Total: R$ ${total.toFixed(2)} ${frete === 0 ? "(frete grátis)" : ""}`;
-
-  document.getElementById("freteInfo").innerText =
-    frete === 0
-      ? "🎉 Frete grátis liberado!"
-      : `Faltam R$ ${(freteGratisValor - subtotal).toFixed(2)} para frete grátis`;
-
-  document.getElementById("whats").href =
-    "https://wa.me/5519988357427?text=" + msg;
-}
-</script>
 </head>
 
 <body>
+
 <div class="container">
 <h1>Monte seu pedido</h1>
 
 <h2>Masculinos</h2>
 
-<div class="item"><img src="img/sauvage.jpg"><label>LS Wild Nº01</label><div class="qtd"><button onclick="alterar('LS Wild Nº01',-1)">-</button><span id="LS Wild Nº01">0</span><button onclick="alterar('LS Wild Nº01',1)">+</button></div></div>
-<div class="item"><img src="img/212vipmen.jpg"><label>LS Elite Nº02</label><div class="qtd"><button onclick="alterar('LS Elite Nº02',-1)">-</button><span id="LS Elite Nº02">0</span><button onclick="alterar('LS Elite Nº02',1)">+</button></div></div>
-<div class="item"><img src="img/aventus.jpg"><label>LS Crown Nº03</label><div class="qtd"><button onclick="alterar('LS Crown Nº03',-1)">-</button><span id="LS Crown Nº03">0</span><button onclick="alterar('LS Crown Nº03',1)">+</button></div></div>
-<div class="item"><img src="img/ferrariblack.jpg"><label>LS Shadow Nº04</label><div class="qtd"><button onclick="alterar('LS Shadow Nº04',-1)">-</button><span id="LS Shadow Nº04">0</span><button onclick="alterar('LS Shadow Nº04',1)">+</button></div></div>
-<div class="item"><img src="img/onemillion.jpg"><label>LS Gold Nº05</label><div class="qtd"><button onclick="alterar('LS Gold Nº05',-1)">-</button><span id="LS Gold Nº05">0</span><button onclick="alterar('LS Gold Nº05',1)">+</button></div></div>
-<div class="item"><img src="img/scandalmen.jpg"><label>LS Rebel Nº06</label><div class="qtd"><button onclick="alterar('LS Rebel Nº06',-1)">-</button><span id="LS Rebel Nº06">0</span><button onclick="alterar('LS Rebel Nº06',1)">+</button></div></div>
-<div class="item"><img src="img/purexs.jpg"><label>LS Desire Nº07</label><div class="qtd"><button onclick="alterar('LS Desire Nº07',-1)">-</button><span id="LS Desire Nº07">0</span><button onclick="alterar('LS Desire Nº07',1)">+</button></div></div>
-<div class="item"><img src="img/invictus.jpg"><label>LS Victory Nº08</label><div class="qtd"><button onclick="alterar('LS Victory Nº08',-1)">-</button><span id="LS Victory Nº08">0</span><button onclick="alterar('LS Victory Nº08',1)">+</button></div></div>
-<div class="item"><img src="img/poloblack.jpg"><label>LS Night Nº09</label><div class="qtd"><button onclick="alterar('LS Night Nº09',-1)">-</button><span id="LS Night Nº09">0</span><button onclick="alterar('LS Night Nº09',1)">+</button></div></div>
-<div class="item"><img src="img/eros.jpg"><label>LS Intense Nº10</label><div class="qtd"><button onclick="alterar('LS Intense Nº10',-1)">-</button><span id="LS Intense Nº10">0</span><button onclick="alterar('LS Intense Nº10',1)">+</button></div></div>
+<div class="item"><img src="./img/sauvage.jpg"><label>LS Wild Nº01</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/212vipmen.jpg"><label>LS Elite Nº02</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/aventus.jpg"><label>LS Crown Nº03</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/ferrariblack.jpg"><label>LS Shadow Nº04</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/onemillion.jpg"><label>LS Gold Nº05</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/scandalmen.jpg"><label>LS Rebel Nº06</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/purexs.jpg"><label>LS Desire Nº07</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/invictus.jpg"><label>LS Victory Nº08</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/poloblack.jpg"><label>LS Night Nº09</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/eros.jpg"><label>LS Intense Nº10</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
 
 <h2>Femininos</h2>
 
-<div class="item"><img src="img/212viprose.jpg"><label>LS Rose Nº11</label><div class="qtd"><button onclick="alterar('LS Rose Nº11',-1)">-</button><span id="LS Rose Nº11">0</span><button onclick="alterar('LS Rose Nº11',1)">+</button></div></div>
-<div class="item"><img src="img/olympea.jpg"><label>LS Goddess Nº12</label><div class="qtd"><button onclick="alterar('LS Goddess Nº12',-1)">-</button><span id="LS Goddess Nº12">0</span><button onclick="alterar('LS Goddess Nº12',1)">+</button></div></div>
-<div class="item"><img src="img/lightblue.jpg"><label>LS Fresh Nº13</label><div class="qtd"><button onclick="alterar('LS Fresh Nº13',-1)">-</button><span id="LS Fresh Nº13">0</span><button onclick="alterar('LS Fresh Nº13',1)">+</button></div></div>
-<div class="item"><img src="img/scandal.jpg"><label>LS Bold Nº14</label><div class="qtd"><button onclick="alterar('LS Bold Nº14',-1)">-</button><span id="LS Bold Nº14">0</span><button onclick="alterar('LS Bold Nº14',1)">+</button></div></div>
-<div class="item"><img src="img/signature.jpg"><label>LS Pure Nº15</label><div class="qtd"><button onclick="alterar('LS Pure Nº15',-1)">-</button><span id="LS Pure Nº15">0</span><button onclick="alterar('LS Pure Nº15',1)">+</button></div></div>
-<div class="item"><img src="img/linterdit.jpg"><label>LS Noir Nº16</label><div class="qtd"><button onclick="alterar('LS Noir Nº16',-1)">-</button><span id="LS Noir Nº16">0</span><button onclick="alterar('LS Noir Nº16',1)">+</button></div></div>
-<div class="item"><img src="img/cocomademoiselle.jpg"><label>LS Chic Nº17</label><div class="qtd"><button onclick="alterar('LS Chic Nº17',-1)">-</button><span id="LS Chic Nº17">0</span><button onclick="alterar('LS Chic Nº17',1)">+</button></div></div>
-<div class="item"><img src="img/chance.jpg"><label>LS Chance Nº18</label><div class="qtd"><button onclick="alterar('LS Chance Nº18',-1)">-</button><span id="LS Chance Nº18">0</span><button onclick="alterar('LS Chance Nº18',1)">+</button></div></div>
-<div class="item"><img src="img/goodgirl.jpg"><label>LS Secret Nº19</label><div class="qtd"><button onclick="alterar('LS Secret Nº19',-1)">-</button><span id="LS Secret Nº19">0</span><button onclick="alterar('LS Secret Nº19',1)">+</button></div></div>
-<div class="item"><img src="img/omniacristaline.jpg"><label>LS Crystal Nº20</label><div class="qtd"><button onclick="alterar('LS Crystal Nº20',-1)">-</button><span id="LS Crystal Nº20">0</span><button onclick="alterar('LS Crystal Nº20',1)">+</button></div></div>
-<div class="item"><img src="img/libre.jpg"><label>LS Liberty Nº21</label><div class="qtd"><button onclick="alterar('LS Liberty Nº21',-1)">-</button><span id="LS Liberty Nº21">0</span><button onclick="alterar('LS Liberty Nº21',1)">+</button></div></div>
-
-<div class="box">
-<h2>Endereço de entrega</h2>
-<input id="endereco" placeholder="Rua, número, bairro, cidade - UF" oninput="atualizar()">
-<input id="cep" placeholder="CEP" oninput="atualizar()">
-</div>
-
-<div class="info" id="freteInfo">Faltam R$ 300,00 para frete grátis</div>
-<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-
-<div class="total" id="total">Total: R$ 0,00</div>
-
-<a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
+<div class="item"><img src="./img/212viprose.jpg"><label>LS Rose Nº11</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/olympea.jpg"><label>LS Goddess Nº12</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/lightblue.jpg"><label>LS Fresh Nº13</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/scandal.jpg"><label>LS Bold Nº14</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/signature.jpg"><label>LS Pure Nº15</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/linterdit.jpg"><label>LS Noir Nº16</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/cocomademoiselle.jpg"><label>LS Chic Nº17</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/chance.jpg"><label>LS Chance Nº18</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/goodgirl.jpg"><label>LS Secret Nº19</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/omniacristaline.jpg"><label>LS Crystal Nº20</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
+<div class="item"><img src="./img/libre.jpg"><label>LS Liberty Nº21</label><div class="qtd"><button>-</button><span>0</span><button>+</button></div></div>
 
 <small>
 Produto LS Essence. Referências olfativas apenas indicativas.
 </small>
 
 </div>
+
 </body>
 </html>
