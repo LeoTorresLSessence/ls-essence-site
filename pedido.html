@@ -17,23 +17,38 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 .nome{font-weight:bold}
 
 .tamanhos{margin-top:10px}
-.tamanho{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px}
+.tamanho{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:8px;
+  font-size:13px;
+  padding:8px;
+  border-radius:10px;
+  border:1px solid transparent;
+}
+.tamanho.vantajoso{
+  border-color:#c9a24d;
+  background:rgba(201,162,77,.08);
+}
+.selo{
+  background:#c9a24d;
+  color:#000;
+  font-size:10px;
+  padding:2px 6px;
+  border-radius:8px;
+  margin-left:6px;
+  font-weight:bold;
+}
+
 .preco{color:#c9a24d;font-size:12px}
 
 .qtd{display:flex;align-items:center;gap:6px}
 .qtd button{background:#c9a24d;border:none;padding:5px 9px;font-weight:bold;cursor:pointer}
 .qtd span{min-width:18px;text-align:center}
 
-.box{background:#111;border-radius:16px;padding:16px;margin-top:22px}
-input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none}
-
-.barra-box{margin-top:16px}
-.barra{height:10px;background:#333;border-radius:10px;overflow:hidden}
-.barra span{display:block;height:100%;background:#c9a24d;width:0%;transition:.3s}
-
 .total{font-size:20px;text-align:center;margin:22px 0;color:#c9a24d}
 .btn{display:block;width:100%;background:#c9a24d;color:#000;text-align:center;padding:14px;border-radius:30px;text-decoration:none;font-weight:bold}
-.info{text-align:center;font-size:13px;color:#ccc;margin-top:10px}
 small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
 </style>
 
@@ -49,7 +64,6 @@ const perfumes = [
  {nome:"LS Victory Nº08",img:"invictus.jpg",cat:"m"},
  {nome:"LS Night Nº09",img:"poloblack.jpg",cat:"m"},
  {nome:"LS Intense Nº10",img:"eros.jpg",cat:"m"},
-
  {nome:"LS Rose Nº11",img:"212viprose.jpg",cat:"f"},
  {nome:"LS Goddess Nº12",img:"olympea.jpg",cat:"f"},
  {nome:"LS Fresh Nº13",img:"lightblue.jpg",cat:"f"},
@@ -63,12 +77,13 @@ const perfumes = [
  {nome:"LS Liberty Nº21",img:"libre.jpg",cat:"f"},
 ];
 
-let carrinho = {};
+let carrinho={};
 perfumes.forEach(p=>carrinho[p.nome]={30:0,100:0});
 
 function gerarLista(){
-  let masc="", fem="";
+  let masc="",fem="";
   perfumes.forEach(p=>{
+    const id30=p.nome+"-30", id100=p.nome+"-100";
     const html=`
     <div class="item">
       <div class="item-top">
@@ -77,20 +92,22 @@ function gerarLista(){
       </div>
 
       <div class="tamanhos">
-        <div class="tamanho">
-          <span>30mL — <span class="preco">1 perfume: R$59,90 | A partir de 2 perfumes.: R$50,00 cada unid.</span></span>
+        <div class="tamanho" id="${id30}-box">
+          <span>30mL <span class="preco">1 un: R$59,90 | 2+ un: R$49,90</span>
+          <span class="selo" id="${id30}-selo">Mais vantajoso 💎</span></span>
           <div class="qtd">
             <button onclick="alt('${p.nome}',30,-1)">-</button>
-            <span id="${p.nome}-30">0</span>
+            <span id="${id30}">0</span>
             <button onclick="alt('${p.nome}',30,1)">+</button>
           </div>
         </div>
 
-        <div class="tamanho">
-          <span>100mL — <span class="preco">1 perfume: R$130,00 | A partir de 2 perfumes: R$120,00 cada unid.</span></span>
+        <div class="tamanho" id="${id100}-box">
+          <span>100mL <span class="preco">1 un: R$129,90 | 2+ un: R$119,90</span>
+          <span class="selo" id="${id100}-selo">Mais vantajoso 💎</span></span>
           <div class="qtd">
             <button onclick="alt('${p.nome}',100,-1)">-</button>
-            <span id="${p.nome}-100">0</span>
+            <span id="${id100}">0</span>
             <button onclick="alt('${p.nome}',100,1)">+</button>
           </div>
         </div>
@@ -100,52 +117,47 @@ function gerarLista(){
   });
   document.getElementById("masc").innerHTML=masc;
   document.getElementById("fem").innerHTML=fem;
+
+  perfumes.forEach(p=>destacar(p.nome));
 }
 
 function alt(n,t,d){
   carrinho[n][t]+=d;
-  if(carrinho[n][t]<0) carrinho[n][t]=0;
+  if(carrinho[n][t]<0)carrinho[n][t]=0;
   document.getElementById(n+"-"+t).innerText=carrinho[n][t];
+  destacar(n);
   atualizar();
+}
+
+function destacar(nome){
+  const q30=carrinho[nome][30];
+  const q100=carrinho[nome][100];
+
+  const p30=(q30>1?49.9:59.9)/30;
+  const p100=(q100>1?119.9:129.9)/100;
+
+  ["30","100"].forEach(t=>{
+    document.getElementById(`${nome}-${t}-box`).classList.remove("vantajoso");
+    document.getElementById(`${nome}-${t}-selo`).style.display="none";
+  });
+
+  if(p30<p100){
+    document.getElementById(`${nome}-30-box`).classList.add("vantajoso");
+    document.getElementById(`${nome}-30-selo`).style.display="inline";
+  }else{
+    document.getElementById(`${nome}-100-box`).classList.add("vantajoso");
+    document.getElementById(`${nome}-100-selo`).style.display="inline";
+  }
 }
 
 function atualizar(){
   let total=0;
-  let msg="🖤 *Pedido LS Essence*%0A%0A";
-
   for(let n in carrinho){
     const q30=carrinho[n][30], q100=carrinho[n][100];
-    if(q30){
-      total+=q30*(q30>1?50:59.9);
-      msg+=`• ${n} 30mL — ${q30} un.%0A`;
-    }
-    if(q100){
-      total+=q100*(q100>1?120:130);
-      msg+=`• ${n} 100mL — ${q100} un.%0A`;
-    }
+    if(q30) total+=q30*(q30>1?49.9:59.9);
+    if(q100) total+=q100*(q100>1?119.9:129.9);
   }
-
-  let progresso=Math.min((total/300)*100,100);
-  document.getElementById("prog").style.width=progresso+"%";
-
-  let frete= total>=300 ? 0 : 20;
-  document.getElementById("infoFrete").innerText=
-    frete===0?"🎉 Frete grátis aplicado":"🚚 Frete grátis acima de R$300";
-
-  const end=document.getElementById("end").value;
-  const cep=document.getElementById("cep").value;
-
-  msg+=`%0A📍 ${end}%0ACEP: ${cep}`;
-  msg+=`%0A🚚 Frete: ${frete===0?"GRÁTIS":"R$20,00"}`;
-  msg+=`%0A⏳ Prazo: Produção até 6 dias úteis + entrega até 4 dias úteis`;
-  msg+=`%0A%0A💰 Total: R$ ${(total+frete).toFixed(2)}`;
-  msg+=`%0A💳 Pagamento via PIX`;
-
-  document.getElementById("total").innerText=
-    "Total: R$ "+(total+frete).toFixed(2);
-
-  document.getElementById("whats").href=
-    "https://wa.me/5519988357427?text="+msg;
+  document.getElementById("total").innerText="Total: R$ "+total.toFixed(2);
 }
 
 window.onload=gerarLista;
@@ -162,19 +174,8 @@ window.onload=gerarLista;
 <h2>Femininos</h2>
 <div id="fem"></div>
 
-<div class="box">
-<h2>Entrega</h2>
-<input id="end" placeholder="Endereço completo" oninput="atualizar()">
-<input id="cep" placeholder="CEP" oninput="atualizar()">
-<div class="barra-box">
-<div class="barra"><span id="prog"></span></div>
-<div class="info" id="infoFrete"></div>
-</div>
-</div>
-
 <div class="total" id="total">Total: R$ 0,00</div>
-<a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
-
+<a class="btn">Finalizar pedido no WhatsApp</a>
 <small>LS Essence • Referências olfativas indicativas</small>
 </div>
 </body>
