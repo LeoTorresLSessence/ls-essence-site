@@ -26,9 +26,6 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 .qtd button{background:#c9a24d;border:none;padding:5px 9px;font-weight:bold;cursor:pointer}
 .qtd span{min-width:18px;text-align:center}
 
-.box{background:#111;border-radius:16px;padding:16px;margin-top:24px}
-input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none;outline:none}
-
 .total{font-size:20px;text-align:center;margin:22px 0;color:#c9a24d}
 .btn{display:block;width:100%;background:#c9a24d;color:#000;text-align:center;padding:14px;border-radius:30px;text-decoration:none;font-weight:bold}
 small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
@@ -45,7 +42,7 @@ transition:.3s;
 .barra{width:100%;height:8px;background:#333;border-radius:10px;overflow:hidden}
 .barra span{display:block;height:100%;width:0%;background:#c9a24d;transition:width .5s ease}
 
-/* 🎉 ANIMAÇÃO FRETE GRÁTIS */
+/* ANIMAÇÃO FRETE GRÁTIS */
 .frete-ativo{
 border-color:#c9a24d;
 box-shadow:0 0 20px rgba(201,162,77,.7);
@@ -60,6 +57,7 @@ animation:pulse 1.4s infinite;
 
 <script>
 const meta=300;
+
 const perfumes=[
 {nome:"LS Wild Nº01",img:"sauvage.jpg",cat:"m"},
 {nome:"LS Elite Nº02",img:"212vipmen.jpg",cat:"m"},
@@ -87,6 +85,51 @@ const perfumes=[
 let carrinho={};
 perfumes.forEach(p=>carrinho[p.nome]={30:0,100:0});
 
+function criarItem(p){
+return `
+<div class="item">
+  <div class="item-top">
+    <img src="img/${p.img}">
+    <div class="nome">${p.nome}</div>
+  </div>
+
+  <div class="tamanhos">
+    <div class="tamanho">
+      <div>30mL <span class="preco">R$59,90 | 2+ R$49,90</span></div>
+      <div class="qtd">
+        <button onclick="alterar('${p.nome}',30,-1)">-</button>
+        <span id="${p.nome}30">0</span>
+        <button onclick="alterar('${p.nome}',30,1)">+</button>
+      </div>
+    </div>
+
+    <div class="tamanho vantajoso">
+      <div>100mL <span class="selo">Mais vantajoso</span>
+      <span class="preco">R$129,90 | 2+ R$119,90</span></div>
+      <div class="qtd">
+        <button onclick="alterar('${p.nome}',100,-1)">-</button>
+        <span id="${p.nome}100">0</span>
+        <button onclick="alterar('${p.nome}',100,1)">+</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+function renderizar(){
+const masc=document.getElementById("masc");
+const fem=document.getElementById("fem");
+perfumes.forEach(p=>{
+(p.cat==="m"?masc:fem).innerHTML+=criarItem(p);
+});
+}
+
+function alterar(nome,tam,val){
+carrinho[nome][tam]=Math.max(0,carrinho[nome][tam]+val);
+document.getElementById(nome+tam).innerText=carrinho[nome][tam];
+atualizar();
+}
+
 function atualizar(){
 let subtotal=0;
 for(let n in carrinho){
@@ -112,11 +155,12 @@ box.classList.remove("frete-ativo");
 
 document.getElementById("total").innerText="Total: R$ "+subtotal.toFixed(2);
 }
+
+window.onload=renderizar;
 </script>
 </head>
 
 <body>
-
 <div class="container">
 <h1>Monte seu pedido</h1>
 <h2>Masculinos</h2><div id="masc"></div>
@@ -131,7 +175,6 @@ document.getElementById("total").innerText="Total: R$ "+subtotal.toFixed(2);
 <div class="frete-texto" id="freteTexto">Faltam R$ 300,00 para frete grátis</div>
 <div class="barra"><span id="barraFrete"></span></div>
 </div>
-
 </body>
 </html>
 
