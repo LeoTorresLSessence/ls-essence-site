@@ -17,16 +17,9 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 .nome{font-weight:bold}
 
 .tamanhos{margin-top:10px}
-.tamanho{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-top:8px;font-size:13px;padding:8px;border-radius:10px;
-  border:1px solid transparent
-}
+.tamanho{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;padding:8px;border-radius:10px;border:1px solid transparent}
 .tamanho.vantajoso{border-color:#c9a24d;background:rgba(201,162,77,.08)}
-.selo{
-  background:#c9a24d;color:#000;font-size:10px;
-  padding:2px 6px;border-radius:8px;margin-left:6px;font-weight:bold
-}
+.selo{background:#c9a24d;color:#000;font-size:10px;padding:2px 6px;border-radius:8px;margin-left:6px;font-weight:bold}
 .preco{color:#c9a24d;font-size:12px}
 
 .qtd{display:flex;align-items:center;gap:6px}
@@ -40,24 +33,33 @@ input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none;out
 .btn{display:block;width:100%;background:#c9a24d;color:#000;text-align:center;padding:14px;border-radius:30px;text-decoration:none;font-weight:bold}
 small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
 
-/* ===== CONTADOR FLUTUANTE FRETE ===== */
+/* FRETE FLUTUANTE */
 .frete-flutuante{
-  position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
-  background:#111;border:1px solid #333;
-  border-radius:14px;padding:12px 16px;
-  width:90%;max-width:360px;
-  z-index:999;
-  box-shadow:0 0 18px rgba(0,0,0,.6)
+position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
+background:#111;border:1px solid #333;border-radius:14px;
+padding:12px 16px;width:90%;max-width:360px;
+z-index:999;box-shadow:0 0 18px rgba(0,0,0,.6);
+transition:.3s;
 }
-.frete-texto{font-size:13px;text-align:center;margin-bottom:6px}
+.frete-texto{text-align:center;font-size:13px;margin-bottom:6px}
 .barra{width:100%;height:8px;background:#333;border-radius:10px;overflow:hidden}
-.barra span{
-  display:block;height:100%;width:0%;
-  background:#c9a24d;transition:width .4s ease
+.barra span{display:block;height:100%;width:0%;background:#c9a24d;transition:width .5s ease}
+
+/* 🎉 ANIMAÇÃO FRETE GRÁTIS */
+.frete-ativo{
+border-color:#c9a24d;
+box-shadow:0 0 20px rgba(201,162,77,.7);
+animation:pulse 1.4s infinite;
+}
+@keyframes pulse{
+0%{transform:translateX(-50%) scale(1)}
+50%{transform:translateX(-50%) scale(1.03)}
+100%{transform:translateX(-50%) scale(1)}
 }
 </style>
 
 <script>
+const meta=300;
 const perfumes=[
 {nome:"LS Wild Nº01",img:"sauvage.jpg",cat:"m"},
 {nome:"LS Elite Nº02",img:"212vipmen.jpg",cat:"m"},
@@ -79,126 +81,59 @@ const perfumes=[
 {nome:"LS Chance Nº18",img:"chance.jpg",cat:"f"},
 {nome:"LS Secret Nº19",img:"goodgirl.jpg",cat:"f"},
 {nome:"LS Crystal Nº20",img:"omniacristaline.jpg",cat:"f"},
-{nome:"LS Liberty Nº21",img:"libre.jpg",cat:"f"}
+{nome:"LS Liberty Nº21",img:"libre.jpg",cat:"f"},
 ];
 
 let carrinho={};
 perfumes.forEach(p=>carrinho[p.nome]={30:0,100:0});
 
-function gerarLista(){
-let m="",f="";
-perfumes.forEach(p=>{
-const html=`
-<div class="item">
-<div class="item-top">
-<img src="./img/${p.img}">
-<div class="nome">${p.nome}</div>
-</div>
-
-<div class="tamanhos">
-<div class="tamanho" id="${p.nome}-30-box">
-<span>30mL <span class="preco">1 un: R$59,90 | 2+ un: R$49,90</span>
-<span class="selo" id="${p.nome}-30-selo">Mais vantajoso</span></span>
-<div class="qtd">
-<button onclick="alt('${p.nome}',30,-1)">-</button>
-<span id="${p.nome}-30">0</span>
-<button onclick="alt('${p.nome}',30,1)">+</button>
-</div>
-</div>
-
-<div class="tamanho" id="${p.nome}-100-box">
-<span>100mL <span class="preco">1 un: R$129,90 | 2+ un: R$119,90</span>
-<span class="selo" id="${p.nome}-100-selo">Mais vantajoso</span></span>
-<div class="qtd">
-<button onclick="alt('${p.nome}',100,-1)">-</button>
-<span id="${p.nome}-100">0</span>
-<button onclick="alt('${p.nome}',100,1)">+</button>
-</div>
-</div>
-</div>
-</div>`;
-p.cat==="m"?m+=html:f+=html;
-});
-masc.innerHTML=m; fem.innerHTML=f;
-perfumes.forEach(p=>destacar(p.nome));
-}
-
-function alt(n,t,d){
-carrinho[n][t]=Math.max(0,carrinho[n][t]+d);
-document.getElementById(`${n}-${t}`).innerText=carrinho[n][t];
-destacar(n); atualizar();
-}
-
-function destacar(n){
-const q30=carrinho[n][30], q100=carrinho[n][100];
-const p30=(q30>1?49.9:59.9)/30;
-const p100=(q100>1?119.9:129.9)/100;
-["30","100"].forEach(t=>{
-document.getElementById(`${n}-${t}-box`).classList.remove("vantajoso");
-document.getElementById(`${n}-${t}-selo`).style.display="none";
-});
-(p30<p100?
-[`${n}-30-box`,`${n}-30-selo`]:
-[`${n}-100-box`,`${n}-100-selo`])
-.forEach((id,i)=>document.getElementById(id).style[i?"display":""]=i?"inline":"");
-}
-
 function atualizar(){
-let total=0,msg="🖤 *Pedido LS Essence*%0A%0A";
+let subtotal=0;
 for(let n in carrinho){
 let q30=carrinho[n][30], q100=carrinho[n][100];
-if(q30){total+=q30*(q30>1?49.9:59.9);msg+=`• ${n} 30mL — ${q30} un.%0A`}
-if(q100){total+=q100*(q100>1?119.9:129.9);msg+=`• ${n} 100mL — ${q100} un.%0A`}
+if(q30) subtotal+=q30*(q30>1?49.9:59.9);
+if(q100) subtotal+=q100*(q100>1?119.9:129.9);
 }
 
-/* FRETE */
-const meta=300;
 const barra=document.getElementById("barraFrete");
 const texto=document.getElementById("freteTexto");
-let perc=Math.min(total/meta*100,100);
+const box=document.getElementById("freteBox");
+
+let perc=Math.min(subtotal/meta*100,100);
 barra.style.width=perc+"%";
-let frete=total>=meta?0:20;
-texto.innerText=total>=meta?"🎉 Frete grátis ativado!":`Faltam R$ ${(meta-total).toFixed(2)} para frete grátis`;
-total+=frete;
 
-msg+=`%0A🚚 Frete: ${frete===0?"GRÁTIS":"R$ 20,00"}`;
-msg+=`%0A⏳ Prazo: 6 dias úteis produção + 4 dias úteis entrega`;
-msg+=`%0A%0A📍 Endereço:%0A${endereco.value}%0ACEP: ${cep.value}`;
-msg+=`%0A%0A💰 Total: R$ ${total.toFixed(2)}`;
-msg+=`%0A💳 Pagamento via PIX`;
-
-document.getElementById("total").innerText="Total: R$ "+total.toFixed(2);
-document.getElementById("whats").href="https://wa.me/5519988357427?text="+msg;
+if(subtotal>=meta){
+texto.innerText="🎉 Frete grátis ativado!";
+box.classList.add("frete-ativo");
+}else{
+texto.innerText=`Faltam R$ ${(meta-subtotal).toFixed(2)} para frete grátis`;
+box.classList.remove("frete-ativo");
 }
 
-window.onload=gerarLista;
+document.getElementById("total").innerText="Total: R$ "+subtotal.toFixed(2);
+}
 </script>
 </head>
 
 <body>
+
 <div class="container">
 <h1>Monte seu pedido</h1>
-
 <h2>Masculinos</h2><div id="masc"></div>
 <h2>Femininos</h2><div id="fem"></div>
 
-<div class="box">
-<h2>Endereço de entrega</h2>
-<input id="endereco" placeholder="Rua, número, bairro, cidade - UF" oninput="atualizar()">
-<input id="cep" placeholder="CEP" oninput="atualizar()">
-</div>
-
 <div class="total" id="total">Total: R$ 0,00</div>
-<a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
+<a class="btn">Finalizar pedido no WhatsApp</a>
 <small>LS Essence • Referências olfativas apenas indicativas</small>
 </div>
 
-<div class="frete-flutuante">
+<div class="frete-flutuante" id="freteBox">
 <div class="frete-texto" id="freteTexto">Faltam R$ 300,00 para frete grátis</div>
 <div class="barra"><span id="barraFrete"></span></div>
 </div>
 
 </body>
 </html>
+
 
 
