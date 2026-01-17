@@ -6,114 +6,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{background:#000;color:#fff;font-family:Arial;margin:0}
-.container{max-width:720px;margin:auto;padding:20px}
+body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;margin:0}
+.container{max-width:760px;margin:auto;padding:16px}
 h1{text-align:center;color:#c9a24d}
-h2{color:#c9a24d;margin-top:35px;border-bottom:1px solid #333;padding-bottom:6px}
+h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px}
 
 .item{background:#111;border-radius:16px;padding:14px;margin-bottom:14px}
-.item-top{display:flex;align-items:center;gap:12px}
-.item img{width:65px;border-radius:12px}
-.nome{flex:1;font-size:14px}
+.item-top{display:flex;align-items:center;gap:14px}
+.item img{width:70px;border-radius:12px}
+.nome{font-weight:bold}
 
 .tamanhos{margin-top:10px}
-.tamanho{display:flex;justify-content:space-between;align-items:center;background:#000;border-radius:12px;padding:8px;margin-top:6px;font-size:13px}
+.tamanho{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px}
+.preco{color:#c9a24d;font-size:12px}
 
-.qtd{display:flex;align-items:center;gap:8px}
-.qtd button{background:#c9a24d;border:none;padding:4px 8px;font-weight:bold;cursor:pointer}
+.qtd{display:flex;align-items:center;gap:6px}
+.qtd button{background:#c9a24d;border:none;padding:5px 9px;font-weight:bold;cursor:pointer}
 .qtd span{min-width:18px;text-align:center}
 
-.preco{color:#c9a24d;font-weight:bold}
+.box{background:#111;border-radius:16px;padding:16px;margin-top:22px}
+input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none}
 
-.total{font-size:20px;text-align:center;margin:25px 0;color:#c9a24d}
-
-.barra{background:#222;border-radius:20px;overflow:hidden;height:10px;margin-top:10px}
+.barra-box{margin-top:16px}
+.barra{height:10px;background:#333;border-radius:10px;overflow:hidden}
 .barra span{display:block;height:100%;background:#c9a24d;width:0%;transition:.3s}
 
+.total{font-size:20px;text-align:center;margin:22px 0;color:#c9a24d}
 .btn{display:block;width:100%;background:#c9a24d;color:#000;text-align:center;padding:14px;border-radius:30px;text-decoration:none;font-weight:bold}
-
-.info{text-align:center;font-size:13px;color:#ccc;margin-top:8px}
-small{text-align:center;display:block;margin-top:20px;font-size:11px;color:#aaa}
+.info{text-align:center;font-size:13px;color:#ccc;margin-top:10px}
+small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
 </style>
 
 <script>
-const precos = {
-  "30": { unico: 59.9, multi: 50 },
-  "100": { unico: 130, multi: 120 }
-};
-
-const metaFrete = 300;
-let carrinho = {};
-
-/* ===== LISTA DINÂMICA DE PERFUMES ===== */
 const perfumes = [
-  // MASCULINOS
-  {nome:"LS Wild Nº01", img:"sauvage.jpg", genero:"M"},
-  {nome:"LS Elite Nº02", img:"212vipmen.jpg", genero:"M"},
-  {nome:"LS Crown Nº03", img:"aventus.jpg", genero:"M"},
-  {nome:"LS Shadow Nº04", img:"ferrariblack.jpg", genero:"M"},
-  {nome:"LS Gold Nº05", img:"onemillion.jpg", genero:"M"},
-  {nome:"LS Rebel Nº06", img:"scandalmen.jpg", genero:"M"},
-  {nome:"LS Desire Nº07", img:"purexs.jpg", genero:"M"},
-  {nome:"LS Victory Nº08", img:"invictus.jpg", genero:"M"},
-  {nome:"LS Night Nº09", img:"poloblack.jpg", genero:"M"},
-  {nome:"LS Intense Nº10", img:"eros.jpg", genero:"M"},
+ {nome:"LS Wild Nº01",img:"sauvage.jpg",cat:"m"},
+ {nome:"LS Elite Nº02",img:"212vipmen.jpg",cat:"m"},
+ {nome:"LS Crown Nº03",img:"aventus.jpg",cat:"m"},
+ {nome:"LS Shadow Nº04",img:"ferrariblack.jpg",cat:"m"},
+ {nome:"LS Gold Nº05",img:"onemillion.jpg",cat:"m"},
+ {nome:"LS Rebel Nº06",img:"scandalmen.jpg",cat:"m"},
+ {nome:"LS Desire Nº07",img:"purexs.jpg",cat:"m"},
+ {nome:"LS Victory Nº08",img:"invictus.jpg",cat:"m"},
+ {nome:"LS Night Nº09",img:"poloblack.jpg",cat:"m"},
+ {nome:"LS Intense Nº10",img:"eros.jpg",cat:"m"},
 
-  // FEMININOS
-  {nome:"LS Rose Nº11", img:"212viprose.jpg", genero:"F"},
-  {nome:"LS Goddess Nº12", img:"olympea.jpg", genero:"F"},
-  {nome:"LS Fresh Nº13", img:"lightblue.jpg", genero:"F"},
-  {nome:"LS Bold Nº14", img:"scandal.jpg", genero:"F"},
-  {nome:"LS Pure Nº15", img:"signature.jpg", genero:"F"},
-  {nome:"LS Noir Nº16", img:"linterdit.jpg", genero:"F"},
-  {nome:"LS Chic Nº17", img:"cocomademoiselle.jpg", genero:"F"},
-  {nome:"LS Chance Nº18", img:"chance.jpg", genero:"F"},
-  {nome:"LS Secret Nº19", img:"goodgirl.jpg", genero:"F"},
-  {nome:"LS Crystal Nº20", img:"omniacristaline.jpg", genero:"F"},
-  {nome:"LS Liberty Nº21", img:"libre.jpg", genero:"F"}
+ {nome:"LS Rose Nº11",img:"212viprose.jpg",cat:"f"},
+ {nome:"LS Goddess Nº12",img:"olympea.jpg",cat:"f"},
+ {nome:"LS Fresh Nº13",img:"lightblue.jpg",cat:"f"},
+ {nome:"LS Bold Nº14",img:"scandal.jpg",cat:"f"},
+ {nome:"LS Pure Nº15",img:"signature.jpg",cat:"f"},
+ {nome:"LS Noir Nº16",img:"linterdit.jpg",cat:"f"},
+ {nome:"LS Chic Nº17",img:"cocomademoiselle.jpg",cat:"f"},
+ {nome:"LS Chance Nº18",img:"chance.jpg",cat:"f"},
+ {nome:"LS Secret Nº19",img:"goodgirl.jpg",cat:"f"},
+ {nome:"LS Crystal Nº20",img:"omniacristaline.jpg",cat:"f"},
+ {nome:"LS Liberty Nº21",img:"libre.jpg",cat:"f"},
 ];
 
+let carrinho = {};
+perfumes.forEach(p=>carrinho[p.nome]={30:0,100:0});
+
 function gerarLista(){
-  const masc = document.getElementById("masculinos");
-  const fem = document.getElementById("femininos");
-
+  let masc="", fem="";
   perfumes.forEach(p=>{
-    carrinho[p.nome] = {"30":0,"100":0};
-
-    const html = `
+    const html=`
     <div class="item">
       <div class="item-top">
         <img src="./img/${p.img}">
         <div class="nome">${p.nome}</div>
       </div>
+
       <div class="tamanhos">
         <div class="tamanho">
-          <span>30mL <span class="preco">R$59,90 / R$50</span></span>
+          <span>30mL — <span class="preco">1 un: R$59,90 | 2+ un: R$50,00</span></span>
           <div class="qtd">
-            <button onclick="alterar('${p.nome}','30',-1)">-</button>
+            <button onclick="alt('${p.nome}',30,-1)">-</button>
             <span id="${p.nome}-30">0</span>
-            <button onclick="alterar('${p.nome}','30',1)">+</button>
+            <button onclick="alt('${p.nome}',30,1)">+</button>
           </div>
         </div>
+
         <div class="tamanho">
-          <span>100mL <span class="preco">R$130 / R$120</span></span>
+          <span>100mL — <span class="preco">1 un: R$130,00 | 2+ un: R$120,00</span></span>
           <div class="qtd">
-            <button onclick="alterar('${p.nome}','100',-1)">-</button>
+            <button onclick="alt('${p.nome}',100,-1)">-</button>
             <span id="${p.nome}-100">0</span>
-            <button onclick="alterar('${p.nome}','100',1)">+</button>
+            <button onclick="alt('${p.nome}',100,1)">+</button>
           </div>
         </div>
       </div>
     </div>`;
-
-    (p.genero==="M"?masc:fem).innerHTML += html;
+    p.cat==="m"?masc+=html:fem+=html;
   });
+  document.getElementById("masc").innerHTML=masc;
+  document.getElementById("fem").innerHTML=fem;
 }
 
-function alterar(nome,tamanho,delta){
-  carrinho[nome][tamanho]+=delta;
-  if(carrinho[nome][tamanho]<0) carrinho[nome][tamanho]=0;
-  document.getElementById(nome+"-"+tamanho).innerText=carrinho[nome][tamanho];
+function alt(n,t,d){
+  carrinho[n][t]+=d;
+  if(carrinho[n][t]<0) carrinho[n][t]=0;
+  document.getElementById(n+"-"+t).innerText=carrinho[n][t];
   atualizar();
 }
 
@@ -121,27 +113,39 @@ function atualizar(){
   let total=0;
   let msg="🖤 *Pedido LS Essence*%0A%0A";
 
-  for(let p in carrinho){
-    ["30","100"].forEach(t=>{
-      const qtd=carrinho[p][t];
-      if(qtd>0){
-        const v = qtd>1 ? precos[t].multi : precos[t].unico;
-        total+=qtd*v;
-        msg+=`• ${p} ${t}mL — ${qtd} un.%0A`;
-      }
-    });
+  for(let n in carrinho){
+    const q30=carrinho[n][30], q100=carrinho[n][100];
+    if(q30){
+      total+=q30*(q30>1?50:59.9);
+      msg+=`• ${n} 30mL — ${q30} un.%0A`;
+    }
+    if(q100){
+      total+=q100*(q100>1?120:130);
+      msg+=`• ${n} 100mL — ${q100} un.%0A`;
+    }
   }
 
-  document.getElementById("barra").style.width =
-    Math.min((total/metaFrete)*100,100)+"%";
+  let progresso=Math.min((total/300)*100,100);
+  document.getElementById("prog").style.width=progresso+"%";
 
-  document.getElementById("freteInfo").innerText =
-    total>=metaFrete ? "🎉 Frete grátis aplicado!" :
-    `Faltam R$ ${(metaFrete-total).toFixed(2)} para frete grátis`;
+  let frete= total>=300 ? 0 : 20;
+  document.getElementById("infoFrete").innerText=
+    frete===0?"🎉 Frete grátis aplicado":"🚚 Frete grátis acima de R$300";
 
-  document.getElementById("total").innerText="Total: R$ "+total.toFixed(2);
+  const end=document.getElementById("end").value;
+  const cep=document.getElementById("cep").value;
+
+  msg+=`%0A📍 ${end}%0ACEP: ${cep}`;
+  msg+=`%0A🚚 Frete: ${frete===0?"GRÁTIS":"R$20,00"}`;
+  msg+=`%0A⏳ Prazo: Produção até 6 dias úteis + entrega até 4 dias úteis`;
+  msg+=`%0A%0A💰 Total: R$ ${(total+frete).toFixed(2)}`;
+  msg+=`%0A💳 Pagamento via PIX`;
+
+  document.getElementById("total").innerText=
+    "Total: R$ "+(total+frete).toFixed(2);
+
   document.getElementById("whats").href=
-    "https://wa.me/5519988357427?text="+msg+"%0A💰 Total: R$ "+total.toFixed(2);
+    "https://wa.me/5519988357427?text="+msg;
 }
 
 window.onload=gerarLista;
@@ -153,18 +157,25 @@ window.onload=gerarLista;
 <h1>Monte seu pedido</h1>
 
 <h2>Masculinos</h2>
-<div id="masculinos"></div>
+<div id="masc"></div>
 
 <h2>Femininos</h2>
-<div id="femininos"></div>
+<div id="fem"></div>
 
-<div class="info" id="freteInfo">Frete grátis a partir de R$300</div>
-<div class="barra"><span id="barra"></span></div>
+<div class="box">
+<h2>Entrega</h2>
+<input id="end" placeholder="Endereço completo" oninput="atualizar()">
+<input id="cep" placeholder="CEP" oninput="atualizar()">
+<div class="barra-box">
+<div class="barra"><span id="prog"></span></div>
+<div class="info" id="infoFrete"></div>
+</div>
+</div>
 
 <div class="total" id="total">Total: R$ 0,00</div>
 <a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
 
-<small>Produto LS Essence. Referências olfativas apenas indicativas.</small>
+<small>LS Essence • Referências olfativas indicativas</small>
 </div>
 </body>
 </html>
