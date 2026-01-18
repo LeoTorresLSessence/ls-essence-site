@@ -7,7 +7,7 @@
 
 <style>
 body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;margin:0}
-.container{max-width:760px;margin:auto;padding:16px}
+.container{max-width:760px;margin:auto;padding:16px;padding-bottom:140px}
 h1{text-align:center;color:#c9a24d}
 h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px}
 
@@ -41,7 +41,7 @@ input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none}
 
 small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
 
-/* Barra flutuante */
+/* Barra total */
 .total-barra{
 position:fixed;
 bottom:0;
@@ -55,6 +55,34 @@ justify-content:space-between;
 align-items:center;
 font-weight:bold;
 z-index:99
+}
+
+/* Frete animado */
+.frete-box{
+position:fixed;
+top:12px;
+left:50%;
+transform:translateX(-50%);
+background:#111;
+border:1px solid #c9a24d;
+color:#c9a24d;
+padding:8px 14px;
+border-radius:20px;
+font-size:13px;
+animation:pulse 1.5s infinite;
+z-index:100;
+}
+.frete-gratis{
+background:#c9a24d;
+color:#000;
+animation:none;
+font-weight:bold;
+}
+
+@keyframes pulse{
+0%{transform:translateX(-50%) scale(1)}
+50%{transform:translateX(-50%) scale(1.05)}
+100%{transform:translateX(-50%) scale(1)}
 }
 </style>
 
@@ -140,11 +168,25 @@ let q30=carrinho[n][30],q100=carrinho[n][100];
 if(q30){total+=q30*(q30>1?49.9:59.9);msg+=`• ${n} 30mL — ${q30} un.%0A`;}
 if(q100){total+=q100*(q100>1?119.9:129.9);msg+=`• ${n} 100mL — ${q100} un.%0A`;}
 }
+
 let frete=total>=300?0:20;
+document.getElementById("freteMsg").className=
+"frete-box "+(frete==0?"frete-gratis":"");
+document.getElementById("freteMsg").innerText=
+frete==0?"🎉 Frete GRÁTIS liberado!":
+`🚚 Faltam R$ ${(300-total).toFixed(2)} para frete grátis`;
+
+const end=document.getElementById("endereco").value;
+const cep=document.getElementById("cep").value;
+
 msg+=`%0A🚚 Frete: ${frete==0?"GRÁTIS":"R$20,00"}`;
+msg+=`%0A📍 Endereço:%0A${end}%0ACEP: ${cep}`;
 msg+=`%0A💰 Total: R$ ${(total+frete).toFixed(2)}`;
-document.getElementById("valorBarra").innerText="R$ "+(total+frete).toFixed(2);
-document.getElementById("whats").href="https://wa.me/5519988357427?text="+msg;
+
+document.getElementById("valorBarra").innerText=
+"R$ "+(total+frete).toFixed(2);
+document.getElementById("whats").href=
+"https://wa.me/5519988357427?text="+msg;
 }
 
 window.onload=gerarLista;
@@ -152,6 +194,9 @@ window.onload=gerarLista;
 </head>
 
 <body>
+
+<div id="freteMsg" class="frete-box"></div>
+
 <div class="container">
 <h1>Monte seu pedido</h1>
 
@@ -160,6 +205,12 @@ window.onload=gerarLista;
 
 <h2>Femininos</h2>
 <div id="fem"></div>
+
+<div class="box">
+<h2>Endereço de entrega</h2>
+<input id="endereco" placeholder="Rua, número, bairro, cidade - UF" oninput="atualizar()">
+<input id="cep" placeholder="CEP" oninput="atualizar()">
+</div>
 
 <a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
 <small>LS Essence • Referências olfativas apenas indicativas</small>
@@ -177,5 +228,3 @@ Finalizar agora
 
 </body>
 </html>
-
-
