@@ -17,10 +17,15 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 .nome{font-weight:bold}
 
 .tamanhos{margin-top:10px}
-.tamanho{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;padding:8px;border-radius:10px}
-.tamanho.vantajoso{border:1px solid #c9a24d;background:rgba(201,162,77,.08)}
-
-.selo{background:#c9a24d;color:#000;font-size:10px;padding:2px 6px;border-radius:8px;margin-left:6px;font-weight:bold;display:none}
+.tamanho{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:8px;
+font-size:13px;
+padding:8px;
+border-radius:10px;
+}
 
 .preco{color:#c9a24d;font-size:12px}
 
@@ -32,18 +37,24 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none}
 
 .total{font-size:20px;text-align:center;margin:22px 0;color:#c9a24d}
-
 .btn{display:block;width:100%;background:#c9a24d;color:#000;text-align:center;padding:14px;border-radius:30px;text-decoration:none;font-weight:bold}
 
 small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
 
 /* Barra flutuante */
 .total-barra{
-position:fixed;bottom:0;left:0;right:0;
-background:#c9a24d;color:#000;
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#c9a24d;
+color:#000;
 padding:10px 14px;
-display:flex;justify-content:space-between;align-items:center;
-font-weight:bold;z-index:99
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-weight:bold;
+z-index:99
 }
 </style>
 
@@ -88,8 +99,8 @@ const html=`
 </div>
 
 <div class="tamanhos">
-<div class="tamanho" id="${p.nome}-30-box">
-<span>30mL <span class="preco">1 un R$59,90 | 2+ R$49,90</span><span class="selo" id="${p.nome}-30-selo">Mais vantajoso</span></span>
+<div class="tamanho">
+<span>30mL <span class="preco">1 un: R$59,90 | 2+ un: R$49,90</span></span>
 <div class="qtd">
 <button onclick="alt('${p.nome}',30,-1)">-</button>
 <span id="${p.nome}-30">${carrinho[p.nome][30]}</span>
@@ -97,8 +108,8 @@ const html=`
 </div>
 </div>
 
-<div class="tamanho" id="${p.nome}-100-box">
-<span>100mL <span class="preco">1 un R$129,90 | 2+ R$119,90</span><span class="selo" id="${p.nome}-100-selo">Mais vantajoso</span></span>
+<div class="tamanho">
+<span>100mL <span class="preco">1 un: R$129,90 | 2+ un: R$119,90</span></span>
 <div class="qtd">
 <button onclick="alt('${p.nome}',100,-1)">-</button>
 <span id="${p.nome}-100">${carrinho[p.nome][100]}</span>
@@ -109,32 +120,17 @@ const html=`
 </div>`;
 p.cat==="m"?m+=html:f+=html;
 });
-masc.innerHTML=m;fem.innerHTML=f;
-perfumes.forEach(p=>destacar(p.nome));
+masc.innerHTML=m;
+fem.innerHTML=f;
 atualizar();
 }
 
 function alt(n,t,d){
-carrinho[n][t]+=d;if(carrinho[n][t]<0)carrinho[n][t]=0;
+carrinho[n][t]+=d;
+if(carrinho[n][t]<0)carrinho[n][t]=0;
 document.getElementById(n+"-"+t).innerText=carrinho[n][t];
-destacar(n);atualizar();salvar();
-}
-
-function destacar(n){
-let q30=carrinho[n][30],q100=carrinho[n][100];
-let p30=(q30>1?49.9:59.9)/30;
-let p100=(q100>1?119.9:129.9)/100;
-["30","100"].forEach(t=>{
-document.getElementById(`${n}-${t}-box`).classList.remove("vantajoso");
-document.getElementById(`${n}-${t}-selo`).style.display="none";
-});
-if(p30<p100){
-document.getElementById(`${n}-30-box`).classList.add("vantajoso");
-document.getElementById(`${n}-30-selo`).style.display="inline";
-}else{
-document.getElementById(`${n}-100-box`).classList.add("vantajoso");
-document.getElementById(`${n}-100-selo`).style.display="inline";
-}
+atualizar();
+salvar();
 }
 
 function atualizar(){
@@ -147,9 +143,8 @@ if(q100){total+=q100*(q100>1?119.9:129.9);msg+=`• ${n} 100mL — ${q100} un.%0
 let frete=total>=300?0:20;
 msg+=`%0A🚚 Frete: ${frete==0?"GRÁTIS":"R$20,00"}`;
 msg+=`%0A💰 Total: R$ ${(total+frete).toFixed(2)}`;
-total.innerText="Total: R$ "+(total+frete).toFixed(2);
-valorBarra.innerText="R$ "+(total+frete).toFixed(2);
-whats.href="https://wa.me/5519988357427?text="+msg;
+document.getElementById("valorBarra").innerText="R$ "+(total+frete).toFixed(2);
+document.getElementById("whats").href="https://wa.me/5519988357427?text="+msg;
 }
 
 window.onload=gerarLista;
@@ -174,10 +169,13 @@ window.onload=gerarLista;
 <span>Total da compra</span>
 <div style="display:flex;gap:10px;align-items:center">
 <span id="valorBarra">R$ 0,00</span>
-<a href="#" onclick="document.getElementById('whats').click()" style="background:#000;color:#c9a24d;padding:8px 14px;border-radius:20px;text-decoration:none">Finalizar agora</a>
+<a href="#" onclick="document.getElementById('whats').click()" style="background:#000;color:#c9a24d;padding:8px 14px;border-radius:20px;text-decoration:none">
+Finalizar agora
+</a>
 </div>
 </div>
 
 </body>
 </html>
+
 
