@@ -17,16 +17,7 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 .nome{font-weight:bold}
 
 .tamanhos{margin-top:10px}
-.tamanho{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-top:8px;
-font-size:13px;
-padding:8px;
-border-radius:10px;
-}
-
+.tamanho{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;padding:8px;border-radius:10px}
 .preco{color:#c9a24d;font-size:12px}
 
 .qtd{display:flex;align-items:center;gap:6px}
@@ -100,17 +91,11 @@ z-index:98;
 }
 .carrinho h3{margin:0 0 10px;color:#c9a24d;font-size:15px}
 .c-item{font-size:12px;margin-bottom:6px;display:flex;justify-content:space-between}
-.c-item button{
-background:none;
-border:none;
-color:#c9a24d;
-cursor:pointer;
-font-weight:bold;
-}
+.c-item button{background:none;border:none;color:#c9a24d;cursor:pointer;font-weight:bold}
 </style>
 
 <script>
-const perfumes=[
+const perfumes=[ /* lista mantida exatamente igual */ 
 {nome:"LS Wild Nº01",img:"sauvage.jpg",cat:"m"},
 {nome:"LS Elite Nº02",img:"212vipmen.jpg",cat:"m"},
 {nome:"LS Crown Nº03",img:"aventus.jpg",cat:"m"},
@@ -136,7 +121,6 @@ const perfumes=[
 
 let carrinho=JSON.parse(localStorage.getItem("carrinhoLS"))||{};
 perfumes.forEach(p=>{if(!carrinho[p.nome])carrinho[p.nome]={30:0,100:0}});
-
 function salvar(){localStorage.setItem("carrinhoLS",JSON.stringify(carrinho));}
 
 function gerarLista(){
@@ -148,7 +132,6 @@ const html=`
 <img src="./img/${p.img}">
 <div class="nome">${p.nome}</div>
 </div>
-
 <div class="tamanhos">
 <div class="tamanho">
 <span>30mL <span class="preco">1 un: R$59,90 | 2+ un: R$49,90</span></span>
@@ -158,7 +141,6 @@ const html=`
 <button onclick="alt('${p.nome}',30,1)">+</button>
 </div>
 </div>
-
 <div class="tamanho">
 <span>100mL <span class="preco">1 un: R$129,90 | 2+ un: R$119,90</span></span>
 <div class="qtd">
@@ -180,41 +162,33 @@ function alt(n,t,d){
 carrinho[n][t]+=d;
 if(carrinho[n][t]<0)carrinho[n][t]=0;
 document.getElementById(n+"-"+t).innerText=carrinho[n][t];
-atualizar();
-salvar();
+atualizar(); salvar();
 }
 
 function remover(n,t){
 carrinho[n][t]=0;
 document.getElementById(n+"-"+t).innerText=0;
-atualizar();
-salvar();
+atualizar(); salvar();
 }
 
 function atualizar(){
 let total=0,msg="🖤 *Pedido LS Essence*%0A%0A",lista="";
 for(let n in carrinho){
 let q30=carrinho[n][30],q100=carrinho[n][100];
-if(q30){
-let v=q30*(q30>1?49.9:59.9);
-total+=v;
-msg+=`• ${n} 30mL — ${q30} un.%0A`;
-lista+=`<div class="c-item">${n} 30mL (${q30}) <button onclick="remover('${n}',30)">×</button></div>`;
-}
-if(q100){
-let v=q100*(q100>1?119.9:129.9);
-total+=v;
-msg+=`• ${n} 100mL — ${q100} un.%0A`;
-lista+=`<div class="c-item">${n} 100mL (${q100}) <button onclick="remover('${n}',100)">×</button></div>`;
-}
+if(q30){ total+=q30*(q30>1?49.9:59.9); msg+=`• ${n} 30mL — ${q30} un.%0A`; lista+=`<div class="c-item">${n} 30mL (${q30}) <button onclick="remover('${n}',30)">×</button></div>`;}
+if(q100){ total+=q100*(q100>1?119.9:129.9); msg+=`• ${n} 100mL — ${q100} un.%0A`; lista+=`<div class="c-item">${n} 100mL (${q100}) <button onclick="remover('${n}',100)">×</button></div>`;}
 }
 
 let frete=total>=300?0:20;
 freteMsg.className="frete-box "+(frete==0?"frete-gratis":"");
 freteMsg.innerText=frete==0?"🎉 Frete GRÁTIS liberado!":`🚚 Faltam R$ ${(300-total).toFixed(2)} para frete grátis`;
 
+const endereco=document.getElementById("endereco").value;
+const cep=document.getElementById("cep").value;
+
 msg+=`%0A🚚 Frete: ${frete==0?"GRÁTIS":"R$20,00"}`;
-msg+=`%0A💰 Total: R$ ${(total+frete).toFixed(2)}`;
+msg+=`%0A📍 *Endereço de entrega:*%0A${endereco}%0ACEP: ${cep}`;
+msg+=`%0A💰 *Total:* R$ ${(total+frete).toFixed(2)}`;
 
 valorBarra.innerText="R$ "+(total+frete).toFixed(2);
 whats.href="https://wa.me/5519988357427?text="+msg;
@@ -243,6 +217,12 @@ window.onload=gerarLista;
 <h2>Femininos</h2>
 <div id="fem"></div>
 
+<div class="box">
+<h2>Endereço de entrega</h2>
+<input id="endereco" placeholder="Rua, número, bairro, cidade - UF" oninput="atualizar()">
+<input id="cep" placeholder="CEP" oninput="atualizar()">
+</div>
+
 <a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
 <small>LS Essence • Referências olfativas apenas indicativas</small>
 </div>
@@ -259,4 +239,5 @@ Finalizar agora
 
 </body>
 </html>
+
 
