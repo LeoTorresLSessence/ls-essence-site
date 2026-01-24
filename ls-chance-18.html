@@ -10,12 +10,24 @@ body{background:#000;color:#fff;font-family:Arial;padding:30px}
 h1{color:#c9a24d}
 .ref{color:#aaa;font-size:13px;margin-bottom:20px}
 img{width:100%;border-radius:18px;margin-bottom:20px}
-.price{color:#c9a24d;font-size:22px;margin:20px 0}
-.btn{background:#c9a24d;color:#000;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:bold}
+.btn{background:#c9a24d;color:#000;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:bold;display:inline-block}
+select{width:100%;padding:12px;border-radius:10px;border:none;margin:10px 0}
 .legal{font-size:11px;color:#aaa;margin-top:40px;line-height:1.6}
 .back{display:block;margin-top:30px;color:#c9a24d;text-decoration:none;font-size:13px}
 </style>
+
+<script>
+function adicionarCarrinho(){
+const volume=document.getElementById("volume").value;
+let carrinho=JSON.parse(localStorage.getItem("carrinhoLS"))||{};
+if(!carrinho["LS Chance Nº18"]) carrinho["LS Chance Nº18"]={30:0,100:0};
+carrinho["LS Chance Nº18"][volume]++;
+localStorage.setItem("carrinhoLS",JSON.stringify(carrinho));
+window.location.href="pedido.html";
+}
+</script>
 </head>
+
 <body>
 <div class="container">
 
@@ -25,22 +37,17 @@ img{width:100%;border-radius:18px;margin-bottom:20px}
 <img src="img/chance.jpg">
 
 <p><strong>Família olfativa:</strong> Floral Fresco</p>
-<p><strong>Perfil:</strong> Leve, elegante, versátil</p>
-<p><strong>Volume:</strong> 100mL</p>
+<p><strong>Perfil:</strong> Leve, jovem, versátil</p>
 
-<p>
-Uma fragrância luminosa e delicada com flores frescas,
-toque cítrico e fundo confortável.
-As características olfativas podem lembrar Chance.
-</p>
+<select id="volume">
+<option value="30">30mL — R$ 59,90</option>
+<option value="100">100mL — R$ 129,90</option>
+</select>
 
-<div class="price">R$ 129,97</div>
-<a class="btn" href="SEU_LINK_PIX">Comprar com Pix</a>
+<a class="btn" href="#" onclick="adicionarCarrinho()">Adicionar ao carrinho</a>
 <a class="back" href="index.html">← Voltar</a>
 
-<p class="legal">
-Produto original LS Essence. Referência olfativa apenas indicativa.
-</p>
+<p class="legal">Produto original LS Essence. Referências olfativas apenas indicativas.</p>
 
 </div>
 </body>
