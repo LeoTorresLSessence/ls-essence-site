@@ -17,6 +17,14 @@ h2{color:#c9a24d;margin-top:32px;border-bottom:1px solid #333;padding-bottom:6px
 .nome{font-weight:bold}
 .nome small{display:block;font-weight:normal;font-size:11px;color:#aaa}
 
+.detalhes{
+display:inline-block;
+margin-top:6px;
+font-size:12px;
+color:#c9a24d;
+text-decoration:none;
+}
+
 .tamanhos{margin-top:10px}
 .tamanho{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;padding:8px;border-radius:10px}
 .preco{color:#c9a24d;font-size:12px}
@@ -32,7 +40,6 @@ input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none}
 
 small{text-align:center;font-size:11px;color:#aaa;display:block;margin-top:18px}
 
-/* Barra total */
 .total-barra{
 position:fixed;
 bottom:0;
@@ -48,7 +55,6 @@ font-weight:bold;
 z-index:99
 }
 
-/* Frete animado */
 .frete-box{
 position:fixed;
 top:12px;
@@ -63,12 +69,7 @@ font-size:13px;
 animation:pulse 1.5s infinite;
 z-index:100;
 }
-.frete-gratis{
-background:#c9a24d;
-color:#000;
-animation:none;
-font-weight:bold;
-}
+.frete-gratis{background:#c9a24d;color:#000;animation:none;font-weight:bold}
 
 @keyframes pulse{
 0%{transform:translateX(-50%) scale(1)}
@@ -76,7 +77,6 @@ font-weight:bold;
 100%{transform:translateX(-50%) scale(1)}
 }
 
-/* Carrinho */
 .carrinho{
 position:fixed;
 right:10px;
@@ -97,28 +97,28 @@ z-index:98;
 
 <script>
 const perfumes=[
-{nome:"LS Wild Nº01",img:"sauvage.jpg",cat:"m",ref:"Dior Sauvage"},
-{nome:"LS Elite Nº02",img:"212vipmen.jpg",cat:"m",ref:"212 VIP Men"},
-{nome:"LS Crown Nº03",img:"aventus.jpg",cat:"m",ref:"Creed Aventus"},
-{nome:"LS Shadow Nº04",img:"ferrariblack.jpg",cat:"m",ref:"Ferrari Black"},
-{nome:"LS Gold Nº05",img:"onemillion.jpg",cat:"m",ref:"1 Million"},
-{nome:"LS Rebel Nº06",img:"scandalmen.jpg",cat:"m",ref:"Scandal Pour Homme"},
-{nome:"LS Desire Nº07",img:"purexs.jpg",cat:"m",ref:"Pure XS"},
-{nome:"LS Victory Nº08",img:"invictus.jpg",cat:"m",ref:"Invictus"},
-{nome:"LS Night Nº09",img:"poloblack.jpg",cat:"m",ref:"Polo Black"},
-{nome:"LS Intense Nº10",img:"eros.jpg",cat:"m",ref:"Versace Eros"},
+{nome:"LS Wild Nº01",img:"sauvage.jpg",cat:"m",ref:"Dior Sauvage",det:"ls-wild-01.html"},
+{nome:"LS Elite Nº02",img:"212vipmen.jpg",cat:"m",ref:"212 VIP Men",det:"ls-elite-02.html"},
+{nome:"LS Crown Nº03",img:"aventus.jpg",cat:"m",ref:"Creed Aventus",det:"ls-crown-03.html"},
+{nome:"LS Shadow Nº04",img:"ferrariblack.jpg",cat:"m",ref:"Ferrari Black",det:"ls-shadow-04.html"},
+{nome:"LS Gold Nº05",img:"onemillion.jpg",cat:"m",ref:"1 Million",det:"ls-gold-05.html"},
+{nome:"LS Rebel Nº06",img:"scandalmen.jpg",cat:"m",ref:"Scandal Pour Homme",det:"ls-rebel-06.html"},
+{nome:"LS Desire Nº07",img:"purexs.jpg",cat:"m",ref:"Pure XS",det:"ls-desire-07.html"},
+{nome:"LS Victory Nº08",img:"invictus.jpg",cat:"m",ref:"Invictus",det:"ls-victory-08.html"},
+{nome:"LS Night Nº09",img:"poloblack.jpg",cat:"m",ref:"Polo Black",det:"ls-night-09.html"},
+{nome:"LS Intense Nº10",img:"eros.jpg",cat:"m",ref:"Versace Eros",det:"ls-intense-10.html"},
 
-{nome:"LS Rose Nº11",img:"212viprose.jpg",cat:"f",ref:"212 VIP Rosé"},
-{nome:"LS Goddess Nº12",img:"olympea.jpg",cat:"f",ref:"Olympea"},
-{nome:"LS Fresh Nº13",img:"lightblue.jpg",cat:"f",ref:"Light Blue"},
-{nome:"LS Bold Nº14",img:"scandal.jpg",cat:"f",ref:"Scandal"},
-{nome:"LS Pure Nº15",img:"signature.jpg",cat:"f",ref:"Montblanc Signature"},
-{nome:"LS Noir Nº16",img:"linterdit.jpg",cat:"f",ref:"L’Interdit"},
-{nome:"LS Chic Nº17",img:"cocomademoiselle.jpg",cat:"f",ref:"Coco Mademoiselle"},
-{nome:"LS Chance Nº18",img:"chance.jpg",cat:"f",ref:"Chance Chanel"},
-{nome:"LS Secret Nº19",img:"goodgirl.jpg",cat:"f",ref:"Good Girl"},
-{nome:"LS Crystal Nº20",img:"omniacristaline.jpg",cat:"f",ref:"Omnia Crystalline"},
-{nome:"LS Liberty Nº21",img:"libre.jpg",cat:"f",ref:"Libre"}
+{nome:"LS Rose Nº11",img:"212viprose.jpg",cat:"f",ref:"212 VIP Rosé",det:"ls-rose-11.html"},
+{nome:"LS Goddess Nº12",img:"olympea.jpg",cat:"f",ref:"Olympea",det:"ls-goddess-12.html"},
+{nome:"LS Fresh Nº13",img:"lightblue.jpg",cat:"f",ref:"Light Blue",det:"ls-fresh-13.html"},
+{nome:"LS Bold Nº14",img:"scandal.jpg",cat:"f",ref:"Scandal",det:"ls-bold-14.html"},
+{nome:"LS Pure Nº15",img:"signature.jpg",cat:"f",ref:"Montblanc Signature",det:"ls-pure-15.html"},
+{nome:"LS Noir Nº16",img:"linterdit.jpg",cat:"f",ref:"L’Interdit",det:"ls-noir-16.html"},
+{nome:"LS Chic Nº17",img:"cocomademoiselle.jpg",cat:"f",ref:"Coco Mademoiselle",det:"ls-chic-17.html"},
+{nome:"LS Chance Nº18",img:"chance.jpg",cat:"f",ref:"Chance Chanel",det:"ls-chance-18.html"},
+{nome:"LS Secret Nº19",img:"goodgirl.jpg",cat:"f",ref:"Good Girl",det:"ls-secret-19.html"},
+{nome:"LS Crystal Nº20",img:"omniacristaline.jpg",cat:"f",ref:"Omnia Crystalline",det:"ls-crystal-20.html"},
+{nome:"LS Liberty Nº21",img:"libre.jpg",cat:"f",ref:"Libre",det:"ls-liberty-21.html"}
 ];
 
 let carrinho=JSON.parse(localStorage.getItem("carrinhoLS"))||{};
@@ -135,6 +135,7 @@ const html=`
 <div class="nome">
 ${p.nome}
 <small>Inspirado por ${p.ref}</small>
+<a class="detalhes" href="${p.det}">Ver detalhes</a>
 </div>
 </div>
 <div class="tamanhos">
@@ -183,64 +184,23 @@ let q30=carrinho[n][30],q100=carrinho[n][100];
 if(q30){ total+=q30*(q30>1?49.9:59.9); msg+=`• ${n} 30mL — ${q30} un.%0A`; lista+=`<div class="c-item">${n} 30mL (${q30}) <button onclick="remover('${n}',30)">×</button></div>`;}
 if(q100){ total+=q100*(q100>1?119.9:129.9); msg+=`• ${n} 100mL — ${q100} un.%0A`; lista+=`<div class="c-item">${n} 100mL (${q100}) <button onclick="remover('${n}',100)">×</button></div>`;}
 }
-
 let frete=total>=300?0:20;
 freteMsg.className="frete-box "+(frete==0?"frete-gratis":"");
 freteMsg.innerText=frete==0?"🎉 Frete GRÁTIS liberado!":`🚚 Faltam R$ ${(300-total).toFixed(2)} para frete grátis`;
-
-const endereco=document.getElementById("endereco").value;
-const cep=document.getElementById("cep").value;
-
-msg+=`%0A🚚 Frete: ${frete==0?"GRÁTIS":"R$20,00"}`;
-msg+=`%0A📍 *Endereço de entrega:*%0A${endereco}%0ACEP: ${cep}`;
-msg+=`%0A💰 *Total:* R$ ${(total+frete).toFixed(2)}`;
-
 valorBarra.innerText="R$ "+(total+frete).toFixed(2);
-whats.href="https://wa.me/5519988357427?text="+msg;
-carrinhoBox.innerHTML=lista||"<small>Carrinho vazio</small>";
 }
-
 window.onload=gerarLista;
 </script>
 </head>
 
 <body>
-
 <div id="freteMsg" class="frete-box"></div>
-
-<div class="carrinho">
-<h3>🛒 Carrinho</h3>
-<div id="carrinhoBox"></div>
-</div>
-
+<div class="carrinho"><h3>🛒 Carrinho</h3><div id="carrinhoBox"></div></div>
 <div class="container">
 <h1>Monte seu pedido</h1>
-
-<h2>Masculinos</h2>
-<div id="masc"></div>
-
-<h2>Femininos</h2>
-<div id="fem"></div>
-
-<div class="box">
-<h2>Endereço de entrega</h2>
-<input id="endereco" placeholder="Rua, número, bairro, cidade - UF" oninput="atualizar()">
-<input id="cep" placeholder="CEP" oninput="atualizar()">
+<h2>Masculinos</h2><div id="masc"></div>
+<h2>Femininos</h2><div id="fem"></div>
 </div>
-
-<a class="btn" id="whats" target="_blank">Finalizar pedido no WhatsApp</a>
-<small>LS Essence • Referências olfativas apenas indicativas</small>
-</div>
-
-<div class="total-barra">
-<span>Total da compra</span>
-<div style="display:flex;gap:10px;align-items:center">
-<span id="valorBarra">R$ 0,00</span>
-<a href="#" onclick="document.getElementById('whats').click()" style="background:#000;color:#c9a24d;padding:8px 14px;border-radius:20px;text-decoration:none">
-Finalizar agora
-</a>
-</div>
-</div>
-
 </body>
 </html>
+
